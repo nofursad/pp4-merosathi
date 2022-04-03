@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ Profile }} Profile Page
+{% endblock title %}
+
+{% block content %}
+
+<!-- Modal to update user profile -->
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Update your Profile Information
+    </div>
+    <div class="image content">
+        <div class="ui medium image">
+            <img src="{{user.avatar.url}}">
+        </div>
+        <div class="description">
+            <div class="ui header">Please provide the information you want to update.</div>
+            <!-- form to update user profile information -->
+            <form action="" method="post" class="ui form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive right labeled icon button">
+            Update
+            <i class="checkmark icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
+
+
+{% if confirm %}
+
+<div class="ui blue message">Thank you for updating your profile information.</div>
+
+{% endif %}
+
+<button class="ui active button" id="update-profile">Update Profile</button>
+{% endblock content %}

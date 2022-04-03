@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from .utilities import get_random_username_addon
 from django.template.defaultfilters import slugify
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
@@ -11,11 +12,17 @@ class Profile(models.Model):
     bio = models.TextField(default="No Bio...", max_length=300)
     email = models.EmailField(max_length=200, blank=True)
     country = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(default='avatar.png', upload_to='avatars/')
+    avatar = CloudinaryField('image', default='blank-avatar_pxjsla.png')
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
     slug = models.SlugField(unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    def friends_list(self):
+        return self.friends.all()
+
+    def total_friends(self):
+        return self.friends.all().count()
 
     def __str__(self):
         return f"{self.user.username}-{self.created.strftime('%d-%m-%Y')}"
