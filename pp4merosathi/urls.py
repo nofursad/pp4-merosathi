@@ -20,5 +20,7 @@ from .views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home_page'),
-    path('userprofile/', include('userprofile.urls', namespace='userprofile'))
+    path('userprofile/', include('userprofile.urls', namespace='userprofile')),
+    path('post/', include('post.urls', namespace='post')),
+
 ]

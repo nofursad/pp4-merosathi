@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Posts
+
+{% endblock title %}
+
+
+{% block content %}
+
+{% for post in post_content %}
+    <div class="ui raised segment">   
+        <p>{{post.content}}</p>
+        <div class="container">
+            <div class="ui labeled button" tabindex="0">
+                <form action="{% url 'post:like_unlike' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <button class="ui button" type="submit">
+                            {% if profile not in post.liked.all %}
+                                <i class="heart icon"></i> Like
+                            {% else %}
+                                <i class="heart icon blue"></i> Unlike
+                            {% endif %}
+                    </button>
+                    <a class="ui basic label">
+                        {{ post.total_likes }}
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div> 
+{% endfor %}
+
+{% endblock content %}
+
