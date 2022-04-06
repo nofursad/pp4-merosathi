@@ -8,12 +8,18 @@ Posts
 
 
 {% block content %}
-
+    <div class="ui raised segment">
+        <form action="" method="POST" class="ui form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{post_form}}
+            <button type="submit" class="ui button positive" name="post_submit">Publish</button>
+        </form>
+    </div>
 {% for post in post_content %}
-    <div class="ui raised segment">   
+    <div class="ui raised segment">
         <p>{{post.content}}</p>
         <div class="container">
-            <div class="ui labeled button" tabindex="0">
+            <div class="ui right labeled button" tabindex="0">
                 <form action="{% url 'post:like_unlike' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="post_id" value="{{post.id}}">
@@ -24,11 +30,34 @@ Posts
                                 <i class="heart icon blue"></i> Unlike
                             {% endif %}
                     </button>
-                    <a class="ui basic label">
+                    <a class="ui basic left pointing label">
                         {{ post.total_likes }}
                     </a>
                 </form>
             </div>
+        </div>
+        <div class="container">
+            <div class="ui segment">
+                {% if post.comment_set.all %}
+                    {% for comment in post.comment_set.all %}
+                        <p>{{ comment.body }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form action="" method="post" class="ui form">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{post.id}}">
+                <div class="ui grid">
+                    <div class="row">
+                        <div class="column thirteen wide">
+                            {{ comment_form }}
+                        </div>
+                        <div class="column three wide">
+                            <button type="submit" class="ui primary button" name="comment_submit">Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div> 
 {% endfor %}
