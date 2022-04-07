@@ -17,7 +17,8 @@ Posts
     </div>
 {% for post in post_content %}
     <div class="ui raised segment">
-        <p>{{post.content}}</p>
+        <p>{{ post.author }}</p>
+        <p>{{ post.content }}</p>
         <div class="container">
             <div class="ui right labeled button" tabindex="0">
                 <form action="{% url 'post:like_unlike' %}" method="post">
@@ -37,13 +38,22 @@ Posts
             </div>
         </div>
         <div class="container">
-            <div class="ui segment">
-                {% if post.comment_set.all %}
+            {% if post.comment_set.all %}
+            <div class="ui fluid accordion">
+                <div class="title">
+                  <i class="dropdown icon"></i>
+                  Show / Hide Comments
+                </div>
+                <div class="content">
                     {% for comment in post.comment_set.all %}
-                        <p>{{ comment.body }}</p>
+                        <div class="ui segment transition hidden">
+                            <p>{{ comment.user }}</p>
+                            <p>{{ comment.body }}</p>
+                        </div>
                     {% endfor %}
-                {% endif %}
+                </div>
             </div>
+            {% endif %}
             <form action="" method="post" class="ui form">
                 {% csrf_token %}
                 <input type="hidden" name="post_id" value="{{post.id}}">
@@ -60,6 +70,77 @@ Posts
             </form>
         </div>
     </div> 
+
+    <!-- <div class="ui segment">
+        <div class="content">
+            <div class="right floated meta">
+                <div class="ui grid">
+                    <div class="row">
+                        {% ifequal request.user post.author.user %}
+                        <a href=""><button class="ui button bwhite-lg">Update</button></a>
+                        <a href=""><button class="ui button bwhite-lg">Delete</button></a>
+                        {% endifequal%}
+                    </div>
+                </div>
+            </div>
+            <img class="ui avatar image" src="{{user.avatar.url}}"> {{ post.author }}
+        </div>
+        <div class="content">
+            <p>{{ post.content }}</p>
+        </div>
+        <div class="content">
+            <span class="right floated">
+                <form action="{% url 'post:like_unlike' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <button class="ui button" type="submit">
+                        {% if profile not in post.liked.all %}
+                        <i class="heart like icon"></i>
+                        {% else %}
+                        <i class="heart like icon blue"></i>
+                        {% endif %}
+                    </button>
+                </form>
+                {{ post.total_likes }} likes
+            </span>
+            {% if post.comment_set.all %}
+            <div class="ui fluid accordion">
+                <div class="title">
+                    <i class="comment icon"></i>
+                    {{ post.number_comments}} comments
+                </div>
+                <div class="content">
+                    {% for comment in post.comment_set.all %}
+                    <div class="ui segment transition hidden">
+                        <p>{{ comment.user }}</p>
+                        <p>{{ comment.body }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="extra content">
+            <div class="ui large transparent left icon input">
+                <i class="heart outline icon"></i>
+                <form action="" method="post" class="ui form">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <div class="ui grid">
+                        <div class="row">
+                            <div class="column thirteen wide">
+                                {{ comment_form }}
+                            </div>
+                            <div class="column three wide">
+                                <button type="submit" class="ui primary button"
+                                    name="comment_submit">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> -->
 {% endfor %}
 
 {% endblock content %}
