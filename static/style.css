@@ -22,6 +22,8 @@ body {
 
 .bwhite-lg {
     background-color: transparent !important;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 .bwhite-sm {
@@ -31,4 +33,8 @@ body {
 
 .comment-box {
     display: none;
+}
+
+.ui.card {
+    width: 100% !important;
 }
