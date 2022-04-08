@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from .models import Post, Like
 from userprofile.models import Profile
 from .forms import PostForm, CommentForm
+from django.views.generic import UpdateView, DeleteView
+from django.contrib import messages
 
 
 # View to Create Post, comment post and like post
@@ -72,3 +75,32 @@ def like_unlike(request):
             like.save()
 
     return redirect('post:create_list_post_comment')
+
+
+class DeletePost(DeleteView):
+    model = Post
+    template_name = 'post/delete.html'
+    success_url = reverse_lazy('post:create_list_post_comment')
+
+    def get_object(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        obj = Post.objects.get(pk=pk)
+        if not obj.author.user == self.request.user:
+            messages.warning(self.requeset, 'You are not author of the post')
+        return obj
+
+
+class UpdatePost(UpdateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'post/update.html'
+    success_url = reverse_lazy('post:create_list_post_comment')
+
+    def form_valid(self, form):
+        profile = Profile.objects.get(user=self.request.user)
+        if form.instance.author == profile:
+            return super().form_valid(form)
+        else:
+            form.add_error(None, 'You are not author of the post')
+            return super().form_invalid(form)
+

@@ -15,159 +15,78 @@ Posts
             <button type="submit" class="ui button positive" name="post_submit">Publish</button>
         </form>
     </div>
-{% for post in post_content %}
-    <!-- <div class="ui raised segment">
-        <p>{{ post.author }}</p>
-        <p>{{ post.content }}</p>
-        <div class="container">
-            <div class="ui right labeled button" tabindex="0">
+
+    {% for post in post_content %}
+        <div class="ui card">
+            <div class="content">
+            <div class="right floated meta">
+                {% ifequal request.user post.author.user %}
+                    <a href="{% url 'post:update-post' post.pk %}">
+                        <button class="ui button bwhite-lg"><i class="edit icon"></i></button>
+                    </a>
+                    <a href="{% url 'post:delete-post' post.pk %}">
+                        <button class="ui button bwhite-lg"><i class="trash icon"></i></button>
+                    </a>
+                {% endifequal%}
+            </div>
+            <img class="ui avatar image" src="{{post.author.avatar.url}}">
+            {{ post.author.user }} - {{ post.created_on|timesince}} ago
+            </div>
+            <div class="content" >
+            <p>{{ post.content }}</p>
+            </div>
+            <div class="content">
+            <div class="right floated">
                 <form action="{% url 'post:like_unlike' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="post_id" value="{{post.id}}">
-                    <button class="ui button" type="submit">
-                            {% if profile not in post.liked.all %}
-                                <i class="heart icon"></i> Like
-                            {% else %}
-                                <i class="heart icon blue"></i> Unlike
-                            {% endif %}
+                    <button class="ui button bwhite-lg" type="submit">
+                        {% if profile not in post.liked.all %}
+                        <i class="heart like icon"></i>
+                        {{ post.total_likes }} likes
+                        {% else %}
+                        <i class="heart like icon blue"></i>
+                        {{ post.total_likes }} likes
+                        {% endif %}
                     </button>
-                    <a class="ui basic left pointing label">
-                        {{ post.total_likes }}
-                    </a>
                 </form>
             </div>
-        </div>
-        <div class="container">
             {% if post.comment_set.all %}
-            <div class="ui fluid accordion">
-                <div class="title">
-                  <i class="dropdown icon"></i>
-                  Show / Hide Comments
-                </div>
-                <div class="content">
-                    {% for comment in post.comment_set.all %}
+                <div class="ui fluid accordion">
+                    <div class="title">
+                        <i class="comment icon"></i>
+                        {{ post.number_comments}} comments
+                    </div>
+                    <div class="content">
+                        {% for comment in post.comment_set.all %}
                         <div class="ui segment transition hidden">
                             <p>{{ comment.user }}</p>
                             <p>{{ comment.body }}</p>
                         </div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-            <form action="" method="post" class="ui form">
-                {% csrf_token %}
-                <input type="hidden" name="post_id" value="{{post.id}}">
-                <div class="ui grid">
-                    <div class="row">
-                        <div class="column thirteen wide">
-                            {{ comment_form }}
-                        </div>
-                        <div class="column three wide">
-                            <button type="submit" class="ui primary button" name="comment_submit">Comment</button>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>  -->
-
-    <div class="ui segment">
-        <div class="content">
-            <div class="right floated meta">
-                {% ifequal request.user post.author.user %}
-                <button class="ui button bwhite-lg"><i class="edit icon"></i></button>
-                <button class="ui button bwhite-lg"><i class="trash icon"></i></button>
-                {% endifequal%}
-            </div>
-            <img class="ui avatar image" src="{{user.avatar.url}}"> {{ post.author }}
-        </div>
-        <div class="content">
-            <p>{{ post.content }}</p>
-        </div>
-        <div class="content">
-            <span class="right floated">
-                <form action="{% url 'post:like_unlike' %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="post_id" value="{{post.id}}">
-                    <button class="ui button" type="submit">
-                        {% if profile not in post.liked.all %}
-                        <i class="heart like icon"></i>
-                        {% else %}
-                        <i class="heart like icon blue"></i>
-                        {% endif %}
-                    </button>
-                </form>
-                {{ post.total_likes }} likes
-            </span>
-            {% if post.comment_set.all %}
-            <div class="ui fluid accordion">
+            {% else %}
                 <div class="title">
                     <i class="comment icon"></i>
-                    {{ post.number_comments}} comments
+                    No comment yet
                 </div>
-                <div class="content">
-                    {% for comment in post.comment_set.all %}
-                    <div class="ui segment transition hidden">
-                        <p>{{ comment.user }}</p>
-                        <p>{{ comment.body }}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
             {% endif %}
-        </div>
-        <div class="extra content">
-            <div class="ui large transparent left icon input">
-                <i class="heart outline icon"></i>
+            </div>
+            <div class="extra content">
                 <form action="" method="post" class="ui form">
                     {% csrf_token %}
-                    <input type="hidden" name="post_id" value="{{post.id}}">
-                    <div class="ui grid">
-                        <div class="row">
-                            <div class="column thirteen wide">
-                                {{ comment_form }}
-                            </div>
-                            <div class="column three wide">
-                                <button type="submit" class="ui primary button"
-                                    name="comment_submit">Comment</button>
-                            </div>
-                        </div>
+                    <div class="right floated meta">
+                        <button type="submit" class="ui button primary" name="comment_submit">Comment</button>
                     </div>
-                </form>
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <div class="ui large transparent left icon input fluid">
+                        <i class="heart outline icon"></i>
+                        {{ comment_form }}
+                    </div>
+                </form>   
             </div>
         </div>
-    </div>
-
     {% endfor %}
 
-<div class="ui card">
-    <div class="content">
-      <div class="right floated meta">
-          <button class="ui button bwhite-lg"><i class="edit icon"></i></button>
-          <button class="ui button bwhite-lg"><i class="trash icon"></i></button>
-    </div>
-      <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
-    </div>
-    <div class="content" >
-      <p>Test Comment to test the card class</p>
-    </div>
-    <div class="content">
-      <span class="right floated">
-        <i class="heart outline like icon"></i>
-        17 likes
-      </span>
-      <i class="comment icon"></i>
-      3 comments
-    </div>
-    <div class="extra content">
-        <div class="right floated meta">
-            <button class="ui button primary">Comment</button>
-        </div>
-      <div class="ui large transparent left icon input">
-        <i class="heart outline icon"></i>
-        <input type="text" placeholder="Add Comment...">
-      </div>
-    </div>
-  </div>
 {% endblock content %}
-
