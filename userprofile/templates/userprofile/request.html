@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Requests
+{% endblock title %}
+
+{% block content %}
+    <ul>
+        {% for request in request_list %}
+            <li>{{ request }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

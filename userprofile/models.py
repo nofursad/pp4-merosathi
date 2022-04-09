@@ -3,6 +3,28 @@ from django.contrib.auth.models import User
 from .utilities import get_random_username_addon
 from django.template.defaultfilters import slugify
 from cloudinary.models import CloudinaryField
+from django.db.models import Q
+
+class ProfileManager(models.Manager):
+
+    def get_all_profiles_to_invite(self, sender):
+        profiles = Profile.objects.all().exclude(user=sender)
+        profile = Profile.objects.get(user=sender)
+        qs = Friendship.objects.filter(Q(sender=profile) | Q(receiver=profile))
+
+        accepted = []
+        for fs in qs:
+            if fs.status == 'accepted':
+                accepted.append(fs.receiver)
+                accepted.append(fs.sender)
+        
+        available = [profile for profile in profiles if profile not in accepted]
+        return available
+
+    def get_all_profile(self, me):
+        profiles = Profile.objects.all().exclude(user=me)
+        return profiles
+
 
 
 class Profile(models.Model):
@@ -17,6 +39,8 @@ class Profile(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    objects = ProfileManager()
 
     def friends_list(self):
         return self.friends.all()
@@ -67,12 +91,19 @@ STATUS_CHOICES = (
     ('accepted', 'accepted')
 )
 
+class FriendshipManager(models.Manager):
+    def request_received(self, receiver):
+        request_list = Friendship.objects.filter(receiver=receiver, status='send')
+        return request_list
+
 class Friendship(models.Model):
     sender = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='receiver')
     status = models. CharField(max_length=8, choices=STATUS_CHOICES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    objects = FriendshipManager()
 
     def __str__(self):
         return f"{self.sender}-{self.receiver}-{self.status}"
