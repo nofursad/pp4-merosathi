@@ -5,9 +5,51 @@ Profile List
 {% endblock title %}
 
 {% block content %}
-    <ul>
-        {% for profile in all_profiles %}
-            <li>{{ profile }}</li>
-        {% endfor %}
-    </ul>
+{% if is_empty %}
+No Other profile exist
+{% endif %}
+
+
+{% for profile in all_profiles %}
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="four wide column">
+                    <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
+                </div>
+                <div class="twelve wide column">
+                    <h3>{{ profile.user }}</h3>
+                    <p>{{ profile.bio }}</p>
+                    <button class="ui primary button mb-5 bwide-big">See Profile</button>
+                    <br>
+
+                    {% if profile.user not in req_receiver and profile.user not in req_sender %}
+                        <form action="{% url 'userprofile:send_request' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                            <button type="submit" class="ui positive basic button bwide-big"><i
+                                    class="plus square icon"></i>Add as Friend</button>
+                        </form>
+                    {% endif %}
+
+                    {% if profile.user in req_receiver and request.user not in profile.friends.all %}
+                    <button class="ui disabled button bwide-big"><i class="user icon"></i>Friend
+                        Request sent</button>
+                    {% endif %}
+
+                    {% if request.user in profile.friends.all %}
+                        <form action="{% url 'userprofile:unfriend' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                            <button type="submit" class="ui negative basic button bwide-big"><i
+                                    class="minus square icon"></i>Remove as Friend</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
 {% endblock content %}

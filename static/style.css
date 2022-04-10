@@ -20,6 +20,10 @@ body {
     margin-bottom: 5px !important;
 }
 
+.bwide-big {
+    width: 200px !important;
+}
+
 .bwhite-lg {
     background-color: transparent !important;
     margin: 0px !important;
@@ -31,10 +35,6 @@ body {
     width: 10px !important;
 }
 
-/* .comment-box {
-    display: none;
-} */
-
-.ui.card {
+.post {
     width: 100% !important;
 }
