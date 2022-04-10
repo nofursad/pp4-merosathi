@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from .utilities import get_random_username_addon
 from django.template.defaultfilters import slugify
@@ -42,6 +43,12 @@ class Profile(models.Model):
 
     objects = ProfileManager()
 
+    def __str__(self):
+        return f"{self.user.username}-{self.created.strftime('%d-%m-%Y')}"
+
+    def get_absolute_url(self):
+        return reverse('userprofile:user_profile_view', kwargs={'slug': self.slug})
+
     def friends_list(self):
         return self.friends.all()
 
@@ -70,19 +77,26 @@ class Profile(models.Model):
         return total_likes
 
 
-    def __str__(self):
-        return f"{self.user.username}-{self.created.strftime('%d-%m-%Y')}"
+    __initial_first_name = None
+    __initial_last_name = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__initial_first_name = self.first_name
+        self.__initial_last_name = self.last_name
 
     def save(self, *args, **kwargs):
         temp_slug = False
-        if self.first_name and self.last_name:
-            to_slug = slugify(str(self.first_name) + " " + str(self.last_name))
-            temp_slug = Profile.objects.filter(slug=to_slug).exists()
-            while temp_slug:
-                to_slug = slugify(to_slug + " " + str(get_random_username_addon()))
+        to_slug = self.slug
+        if self.first_name != self.__initial_first_name or self.last_name != self.__initial_last_name or self.slug == '':
+            if self.first_name and self.last_name:
+                to_slug = slugify(str(self.first_name) + " " + str(self.last_name))
                 temp_slug = Profile.objects.filter(slug=to_slug).exists()
-        else:
-            to_slug = str(self.user)
+                while temp_slug:
+                    to_slug = slugify(to_slug + " " + str(get_random_username_addon()))
+                    temp_slug = Profile.objects.filter(slug=to_slug).exists()
+            else:
+                to_slug = str(self.user)
         self.slug = to_slug
         super().save(*args, **kwargs)
 

@@ -15,7 +15,9 @@ Requests
                 <div class="row">
                     <div class="four wide column">
                         <img src="{{ request.avatar.url }}" alt="" class="ui rounded fluid image">
-                        <button class="ui primary button mt-5 fluid">See Profile</button>
+                        <a href="{{ request.get_absolute_url }}">
+                            <button class="ui primary button mt-5 fluid">View Profile</button>
+                        </a>
                     </div>
                     <div class="twelve wide column">
                         <h3>{{ request.first_name }} {{ request.last_name }}</h3>

@@ -20,7 +20,9 @@ No Other profile exist
                 <div class="twelve wide column">
                     <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
                     <p>{{ profile.bio }}</p>
-                    <button class="ui primary button mb-5 bwide-big">See Profile</button>
+                    <a href="{{ profile.get_absolute_url }}">
+                        <button class="ui primary button mb-5 bwide-big">View Profile</button>
+                    </a>
                     <br>
 
                     {% if profile.user not in req_receiver and profile.user not in req_sender %}

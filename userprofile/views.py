@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile, Friendship
 from .forms import ProfileModelForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 from django.db.models import Q
 
@@ -76,6 +76,35 @@ def profiles_list_view(request):
     context = {'all_profiles': all_profiles}
 
     return render(request, 'userprofile/allprofiles.html', context)
+
+class UserProfileView (DetailView):
+    model = Profile
+    template_name = 'userprofile/userdetail.html'
+
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        profile = Profile.objects.get(slug=slug)
+        return profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = User.objects.get(username=self.request.user)
+        profile = Profile.objects.get(user=user)
+        req_r = Friendship.objects.filter(sender=profile)
+        req_s = Friendship.objects.filter(receiver=profile)
+        req_receiver = []
+        req_sender = []
+        for item in req_r:
+            req_receiver.append(item.receiver.user)
+        for item in req_s:
+            req_sender.append(item.sender.user)
+        context['req_receiver'] = req_receiver
+        context['req_sender'] = req_sender
+        context['posts'] = self.get_object().get_all_post()
+        context['len_posts'] = True if len(self.get_object().get_all_post()) > 0 else False
+
+        return context
+
 
 class ProfileListView(ListView):
     model = Profile
