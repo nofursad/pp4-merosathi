@@ -5,6 +5,7 @@ from userprofile.models import Profile
 from .forms import PostForm, CommentForm
 from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
+from django.http import JsonResponse
 
 
 # View to Create Post, comment post and like post
@@ -73,6 +74,12 @@ def like_unlike(request):
 
             post_obj.save()
             like.save()
+
+        data = {
+            'value': like.value,
+            'likes': post_obj.liked.all().count()
+        }
+        return JsonResponse(data, safe=False)
 
     return redirect('post:create_list_post_comment')
 

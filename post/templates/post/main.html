@@ -40,17 +40,16 @@ Posts
             </div>
             <div class="content">
             <div class="right floated">
-                <form action="{% url 'post:like_unlike' %}" method="post">
+                <form action="{% url 'post:like_unlike' %}" method="post" class="like-form" id ="{{ post.id }}">
                     {% csrf_token %}
                     <input type="hidden" name="post_id" value="{{post.id}}">
                     <button class="ui button bwhite-lg" type="submit">
                         {% if profile not in post.liked.all %}
-                        <i class="heart like icon"></i>
-                        {{ post.total_likes }} likes
+                        <i class="heart like icon like-btn{{post.id}}"></i>
                         {% else %}
-                        <i class="heart like icon blue"></i>
-                        {{ post.total_likes }} likes
+                        <i class="heart like icon like-btn{{post.id}} blue"></i>
                         {% endif %}
+                        <span class="like-counter{{post.id}}">{{ post.total_likes }}</span> likes
                     </button>
                 </form>
             </div>
