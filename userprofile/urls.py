@@ -7,6 +7,8 @@ from .views import (
     ProfileListView,
     send_request,
     unfriend,
+    accept_request,
+    reject_request,
 )
 
 
@@ -19,4 +21,6 @@ urlpatterns = [
     path('torequest/', request_profiles_list_view, name='request_profiles_list_view'),
     path('send_request/', send_request, name='send_request'),
     path('unfriend/', unfriend, name='unfriend'),
+    path('request/acceptrequest/', accept_request, name='accept_request'),
+    path('request/rejectrequest/', reject_request, name='reject_request'),
 ]

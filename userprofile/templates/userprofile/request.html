@@ -5,9 +5,40 @@ Requests
 {% endblock title %}
 
 {% block content %}
-    <ul>
-        {% for request in request_list %}
-            <li>{{ request }}</li>
-        {% endfor %}
-    </ul>
+    {% if is_empty %}
+        <h1>No Invitation here..</h1>
+    {% endif %}
+    
+    {% for request in request_list %}
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="four wide column">
+                        <img src="{{ request.avatar.url }}" alt="" class="ui rounded fluid image">
+                        <button class="ui primary button mt-5 fluid">See Profile</button>
+                    </div>
+                    <div class="twelve wide column">
+                        <h3>{{ request.first_name }} {{ request.last_name }}</h3>
+                        <p>{{ request.bio }}</p>
+                        <br>
+                        <div class="meta">{{ request.first_name }} wants to Add you as friend?</div>
+                        <form action="{% url 'userprofile:accept_request' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="request_pk" value="{{ request.pk }}">
+                            <button type="submit" class="ui positive basic button mt-5 bwide-big"><i
+                                    class="check square icon"></i>Accept Request</button>
+                        </form>
+                        
+                        <form action="{% url 'userprofile:reject_request' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="request_pk" value="{{ request.pk }}">
+                            <button type="submit" class="ui negative basic button mt-5 bwide-big"><i
+                                    class="close square icon"></i>Reject Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
 {% endblock content %}

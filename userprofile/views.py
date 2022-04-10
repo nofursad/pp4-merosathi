@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile, Friendship
 from .forms import ProfileModelForm
 from django.views.generic import ListView
@@ -28,10 +28,38 @@ def profile_page_view(request):
 def request_received_view(request):
     user = Profile.objects.get(user=request.user)
     request_list = Friendship.objects.request_received(user)
+    result = list(map(lambda x: x.sender, request_list))
+    is_empty = False
+    if len(result) == 0:
+        is_empty = True
 
-    context = {'request_list': request_list}
+    context = {'request_list': result, 'is_empty': is_empty, }
 
     return render(request, 'userprofile/request.html', context)
+
+def accept_request(request):
+    if request.method=='POST':
+        pk = request.POST.get('request_pk')
+        sender = Profile.objects.get(pk=pk)
+        receiver = Profile.objects.get(user=request.user)
+        req = get_object_or_404(Friendship, sender=sender, receiver=receiver)
+        if req.status == 'send':
+            req.status = 'accepted'
+            req.save()
+    
+    return redirect('userprofile:request_received_view')
+
+
+def reject_request(request):
+    if request.method=='POST':
+        pk = request.POST.get('request_pk')
+        sender = Profile.objects.get(pk=pk)
+        receiver = Profile.objects.get(user=request.user)
+        req = get_object_or_404(Friendship, sender=sender, receiver=receiver)
+        req.delete()
+
+    return redirect('userprofile:request_received_view')
+
 
 def request_profiles_list_view(request):
     user = request.user
