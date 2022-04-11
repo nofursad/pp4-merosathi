@@ -26,16 +26,17 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a href="{{ path_to_allprofile }}"
-                        class="{% if request.path == path_to_allprofile %} active {% endif %} item">
+                            class="{% if request.path == path_to_allprofile %} active {% endif %} item">
                             All Profiles
                         </a>
                         <a href="{{ path_to_addfriend }}"
-                        class="{% if request.path == path_to_addfriend %} active {% endif %} item">
+                            class="{% if request.path == path_to_addfriend %} active {% endif %} item">
                             Add Friends
                         </a>
                         <a href="{{ path_to_acceptfriend }}"
-                        class="{% if request.path == path_to_acceptfriend %} active {% endif %} item">
-                            Accept Friends Request
+                            class="{% if request.path == path_to_acceptfriend %} active {% endif %} item">
+                            Friends Request Received&nbsp;
+                            <div class="ui purple horizontal label">{{ request_num }}</div>
                         </a>
                     </div>
                 </div>
@@ -52,8 +53,9 @@
             </div>
 
             <a href="{{ path_to_userprofile }}"
-                        class="{% if request.path == path_to_userprofile %} active {% endif %} item">
-                {{ request.user }}
+                class="{% if request.path == path_to_userprofile %} active {% endif %} item">
+                <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
+                {{ fname }}
             </a>
 
             <a href="" class="ui item">
