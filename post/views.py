@@ -6,9 +6,12 @@ from .forms import PostForm, CommentForm
 from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # View to Create Post, comment post and like post
+@login_required
 def create_list_post_comment(request):
     post_content = Post.objects.all()
     profile = Profile.objects.get(user=request.user)
@@ -50,6 +53,7 @@ def create_list_post_comment(request):
 
     return render(request, 'post/main.html', context)
 
+@login_required
 def like_unlike(request):
     user = request.user
     if request.method == 'POST':
@@ -84,7 +88,7 @@ def like_unlike(request):
     return redirect('post:create_list_post_comment')
 
 
-class DeletePost(DeleteView):
+class DeletePost(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'post/delete.html'
     success_url = reverse_lazy('post:create_list_post_comment')
@@ -97,7 +101,7 @@ class DeletePost(DeleteView):
         return obj
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
     template_name = 'post/update.html'

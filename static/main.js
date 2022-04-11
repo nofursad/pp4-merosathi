@@ -4,6 +4,8 @@ $(document).ready(function() {
   .modal('show');
     })
 
+    $('.ui.dropdown').dropdown()
+
     $('.like-form').submit(function(e) {
       e.preventDefault()
       
