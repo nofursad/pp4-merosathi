@@ -58,11 +58,11 @@
                 {{ fname }}
             </a>
 
-            <a href="" class="ui item">
+            <a href="{% url 'account_logout' %}" class="ui item">
                 Logout
             </a>
             {% else %}
-            <a href="" class="ui item">
+            <a href="{% url 'account_login' %}" class="ui item">
                 Login
             </a>
             {% endif %}

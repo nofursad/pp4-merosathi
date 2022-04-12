@@ -22,5 +22,6 @@ urlpatterns = [
     path('', home_page, name='home_page'),
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('post/', include('post.urls', namespace='post')),
+    path('accounts/', include('allauth.urls')),
 
 ]
