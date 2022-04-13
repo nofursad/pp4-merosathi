@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ user.first_name }} Profile Page
+{% endblock title %}
+
+{% block content %}
+
+<!-- Modal to update user profile -->
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Update your Profile Information
+    </div>
+    <div class="image content">
+        <div class="ui medium image">
+            <img src="{{user.avatar.url}}">
+        </div>
+        <div class="description">
+            <div class="ui header">Please provide the information you want to update.</div>
+            <!-- form to update user profile information -->
+            <form action="" method="post" class="ui form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive right labeled icon button">
+            Update
+            <i class="checkmark icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
+
+
+<div class="ui segment">
+    {% if confirm %}
+        <div class="ui blue message">Thank you for updating your profile information.</div>
+    {% endif %}
+    <h3>Welcome {{ user.first_name }}</h3>
+    <div class="ui grid">
+        <div class="row">
+            <div class="six wide column">
+                <img class="ui medium rounded image" src="{{ user.avatar.url}}"></img>
+                <button class="ui active button mt-5" id="update-profile">Update Profile</button>
+            </div>
+            <div class="ten wide column">
+                <table class="ui table">
+                    <tbody>
+                        <tr>
+                            <td>Username</td>
+                            <td>{{ user.user }}</td>
+                        </tr>
+                        <tr>
+                            <td>First Name</td>
+                            <td>{{ user.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>{{ user.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>User Bio</td>
+                            <td>{{ user.bio }}</td>
+                        </tr>
+                        <tr>
+                            <td>Friends</td>
+                            <td>{{ user.total_friends }}</td>
+                        </tr>
+                        <tr>
+                            <td>Friends</td>
+                            <td>
+                                <ul>
+                                    {% for friend in user.friends_list %}
+                                        <li>{{ friend }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Posts</td>
+                            <td>{{ user.total_posts }}</td>
+                        </tr>
+                        <tr>
+                            <td>Likes Given</td>
+                            <td>{{ user.total_likes_given }}</td>
+                        </tr>
+                        <tr>
+                            <td>Likes Received</td>
+                            <td>{{ user.total_likes_received }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
