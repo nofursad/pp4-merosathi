@@ -7,7 +7,7 @@
 {% block content %}
 
 <!-- Modal to update user profile -->
-<div class="ui modal">
+<div class="ui modal" id="up-modal">
     <i class="close icon"></i>
     <div class="header">
         Update your Profile Information
@@ -34,9 +34,9 @@
 </div>
 
 {% if confirm %}
-    <div class="ui blue message">Thank you for updating your profile information.</div>
+<div class="ui blue message">Thank you for updating your profile information.</div>
 {% endif %}
-    <!-- <h3>Welcome {{ user.first_name }}</h3> -->
+<!-- <h3>Welcome {{ user.first_name }}</h3> -->
 <div class="ui grid">
     <div class="row">
         <div class="four wide column">
@@ -61,28 +61,6 @@
                 </div>
             </div>
             <button class="ui active button mt-5" id="update-profile">Update Profile</button>
-            <!-- {% if object.user not in req_receiver and object.user not in req_sender %}
-            <form action="{% url 'userprofile:send_request' %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="profile_pk" value="{{ object.pk }}">
-                <button type="submit" class="ui positive basic button w-100"><i
-                        class="plus square icon"></i>Add as Friend</button>
-            </form>
-            {% endif %}
-
-            {% if object.user in req_receiver and request.user not in object.friends.all %}
-            <button class="ui disabled button w-100"><i class="user icon"></i>Friend
-                Request sent</button>
-            {% endif %}
-
-            {% if request.user in object.friends.all %}
-            <form action="{% url 'userprofile:unfriend' %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="profile_pk" value="{{ object.pk }}">
-                <button type="submit" class="ui negative basic button w-100"><i
-                        class="minus square icon"></i>Remove as Friend</button>
-            </form>
-            {% endif %} -->
         </div>
         <div class="twelve wide column">
             {% if len_posts %}

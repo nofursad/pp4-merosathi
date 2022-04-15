@@ -20,7 +20,9 @@
 </head>
 <body>
 
-    {% include 'main/navbar.html' %}
+    {% if request.user.is_authenticated %}
+        {% include 'main/navbar.html' %}
+    {% endif %}
 
     <div class="ui container">
 

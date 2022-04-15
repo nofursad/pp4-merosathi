@@ -1,4 +1,3 @@
-{% url 'home_page' as path_to_home %}
 {% url 'post:create_list_post_comment' as path_to_post %}
 {% url 'userprofile:profile_page_view' as path_to_userprofile %}
 {% url 'userprofile:profiles_list_view' as path_to_allprofile %}
@@ -6,21 +5,34 @@
 {% url 'userprofile:request_received_view' as path_to_acceptfriend %}
 
 
+<!-- Modal for sign out confirmation -->
+<!-- <div class="ui modal" id="so-modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Sign Out
+    </div>
+    <div class="image content">
+        <div class="description">
+            <div class="ui header">Are you sure you want to sign out?</div>
+        </div>
+    </div>
+    <a href="{% url 'account_logout' %}">
+        <button class="ui positive right labeled icon button">
+            Sign Out
+            <i class="sign-out icon"></i>
+        </button>
+    </a>
+</div> -->
+
+
 <div class="ui inverted menu nav mb-7">
     <div class="ui container">
-        <a href="{{ path_to_home }}"
+        <a href="{{ path_to_post }}"
             class="{% if request.path == path_to_home %} active {% endif %} item">
             <h3>Mero Sathi</h3>
         </a>
-        {% if request.user.is_authenticated %}
-        <a href="{{ path_to_post }}"
-            class="{% if request.path == path_to_post %} active {% endif %} item">
-            Dashboard
-        </a>
-        {% endif %}
 
         <div class="right menu">
-            {% if request.user.is_authenticated %}
             <div class="item">
                 <div class="ui floating dropdown icon button teal"> Friends
                     <i class="dropdown icon"></i>
@@ -57,15 +69,9 @@
                 <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
                 {{ fname }}
             </a>
-
-            <a href="{% url 'account_logout' %}" class="ui item">
+            <a href="{% url 'account_logout' %}" class="ui item" id="sign-out">
                 Logout
             </a>
-            {% else %}
-            <a href="{% url 'account_login' %}" class="ui item">
-                Login
-            </a>
-            {% endif %}
         </div>
     </div>
 </div>

@@ -1,14 +1,13 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render
+from allauth.account.forms import LoginForm
 
 
 def home_page(request):
     # return HttpResponse('Hello World!')
-    user = request.user
-    hello = 'Hello World!'
+    form = LoginForm(request.POST or None)
 
     context = {
-        'user': user,
-        'hello': hello
+        'form': form,
     }
-    return render(request, 'main/index.html', context)
+    return render(request, 'account/login.html', context)

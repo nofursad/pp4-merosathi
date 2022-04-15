@@ -2,28 +2,62 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %}
+Signup
+{% endblock %}
 
 {% block content %}
 
-<div class="ui segment">
-  <h1>{% trans "Sign Up" %}</h1>
-
-  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign
-      in</a>.{% endblocktrans %}</p>
-
-  <div class="ui grid">
-    <div class="six wide column">
-      <form class="signup ui form" id="signup_form" method="post"
-        action="{% url 'account_signup' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
+<div class="ui middle aligned center aligned two column grid">
+  <div class="column">
+    <h1 class="ui blue header mb-7 mt-5">
+      <div class="content blue">
+        Merosathi
+    </h1>
+    <form id="signup_form" method="post" action="{% url 'account_signup' %}"
+      class="ui large form">
+      {% csrf_token %}
+      <div class="ui stacked segment mb-7">
+        <h1 class="header">
+          Create a new account
+        </h1>
+        <div class="meta mb-7">
+          It's easy and qucik.
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="envelope icon"></i>
+            {{ form.email }}
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            {{ form.username }}
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            {{ form.password1 }}
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            {{ form.password2 }}
+          </div>
+        </div>
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}"
           value="{{ redirect_field_value }}" />
         {% endif %}
-        <button type="submit" class="ui button blue">{% trans "Sign Up" %} &raquo;</button>
-      </form>
+        <button class="ui button fluid large submit green" type="submit">Sign Up</button>
+      </div>
+    </form>
+    <div class="mt-5">
+      <a class="button secondaryAction" href="{% url 'home_page' %}">Already have an
+        account?</a>
     </div>
   </div>
 </div>
