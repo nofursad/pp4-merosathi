@@ -49,3 +49,7 @@ body {
     font-weight: bolder !important;
     margin: 40px auto !important;
 }
+
+.comment-box {
+    max-width: 500px !important;
+}

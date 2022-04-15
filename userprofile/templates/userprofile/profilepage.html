@@ -36,7 +36,6 @@
 {% if confirm %}
 <div class="ui blue message">Thank you for updating your profile information.</div>
 {% endif %}
-<!-- <h3>Welcome {{ user.first_name }}</h3> -->
 <div class="ui grid">
     <div class="row">
         <div class="four wide column">
@@ -63,18 +62,19 @@
             <button class="ui active button mt-5" id="update-profile">Update Profile</button>
         </div>
         <div class="twelve wide column">
-            {% if len_posts %}
-            {% for post in posts %}
+            <!-- {% if len_posts %} -->
+            <!-- {% for post in ups %}
             <div class="segment ui fluid">
                 {% if post.image.url %}
                 <img alt class="image w-100" src="{{ post.image.url }}">
                 {% endif %}
                 {{ post.content }}
             </div>
-            {% endfor %}
-            {% else %}
-            <h1>No post from the {{user.first_name}}</h1>
-            {% endif %}
+            {% endfor %} -->
+            <!-- {% else %} -->
+            <!-- <h1>No post from the {{user.first_name}}</h1>
+            {% endif %} -->
+            <!-- {{ profile }} -->
         </div>
     </div>
 </div>

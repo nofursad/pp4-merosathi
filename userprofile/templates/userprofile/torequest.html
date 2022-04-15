@@ -1,13 +1,43 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Profile List
+Send Requests
 {% endblock title %}
 
 {% block content %}
-    <ul>
-        {% for profile in all_profiles %}
-            <li>{{ profile }}</li>
-        {% endfor %}
-    </ul>
+    {% if is_empty %}
+        <h1>No Invitation Send..</h1>
+    {% endif %}
+    
+    {% for profile in all_profiles %}
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="four wide column">
+                        <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
+                        <a href="{{ profile.get_absolute_url }}">
+                            <button class="ui primary button mt-5 fluid">View Profile</button>
+                        </a>
+                    </div>
+                    <div class="twelve wide column">
+                        <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+                        <p>{{ profile.bio }}</p>
+                        <br>
+                        <div class="meta">You have send friend Request to {{ profile.first_name }}</div>
+                            <button class="ui disabled button bwide-big">
+                                <i class="user icon"></i>Friend Request sent
+                            </button>
+                        
+                        <form action="{% url 'userprofile:cancel_request' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                            <button type="submit" class="ui negative basic button mt-5 bwide-big"><i
+                                    class="close square icon"></i>Cancel Friend Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
 {% endblock content %}

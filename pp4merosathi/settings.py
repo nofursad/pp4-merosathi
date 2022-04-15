@@ -28,9 +28,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['pp4-merosathi.herokuapp.com', 'localhost']
 
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'merosathi',
     'userprofile',
     'post',
 
@@ -97,6 +96,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'userprofile.context_processors.profile_pic',
                 'userprofile.context_processors.request_received_number',
+                'userprofile.context_processors.request_send_number',
             ],
         },
     },

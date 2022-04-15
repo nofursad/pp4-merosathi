@@ -110,6 +110,10 @@ class FriendshipManager(models.Manager):
         request_list = Friendship.objects.filter(receiver=receiver, status='send')
         return request_list
 
+    def request_send(self, sender):
+        all_profiles = Friendship.objects.filter(sender=sender, status='send')
+        return all_profiles
+
 class Friendship(models.Model):
     sender = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='receiver')

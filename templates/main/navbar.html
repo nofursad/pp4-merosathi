@@ -43,12 +43,13 @@
                         </a>
                         <a href="{{ path_to_addfriend }}"
                             class="{% if request.path == path_to_addfriend %} active {% endif %} item">
-                            Add Friends
+                            Add Friends&nbsp;
+                            <div class="ui purple horizontal label">{{ request_send_num }}</div>
                         </a>
                         <a href="{{ path_to_acceptfriend }}"
                             class="{% if request.path == path_to_acceptfriend %} active {% endif %} item">
                             Friends Request Received&nbsp;
-                            <div class="ui purple horizontal label">{{ request_num }}</div>
+                            <div class="ui purple horizontal label">{{ request_rec_num }}</div>
                         </a>
                     </div>
                 </div>

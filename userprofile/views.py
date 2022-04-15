@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile, Friendship
+from post.models import Post
 from .forms import ProfileModelForm
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
@@ -28,6 +29,7 @@ def profile_page_view(request):
 
     return render(request, 'userprofile/profilepage.html', context)
 
+
 @login_required
 def request_received_view(request):
     user = Profile.objects.get(user=request.user)
@@ -40,6 +42,7 @@ def request_received_view(request):
     context = {'request_list': result, 'is_empty': is_empty, }
 
     return render(request, 'userprofile/request.html', context)
+
 
 @login_required
 def accept_request(request):
@@ -54,6 +57,7 @@ def accept_request(request):
     
     return redirect('userprofile:request_received_view')
 
+
 @login_required
 def reject_request(request):
     if request.method=='POST':
@@ -65,14 +69,20 @@ def reject_request(request):
 
     return redirect('userprofile:request_received_view')
 
+
 @login_required
 def request_profiles_list_view(request):
-    user = request.user
-    all_profiles = Profile.objects.get_all_profiles_to_invite(user)
+    user = Profile.objects.get(user=request.user)
+    all_profiles = Friendship.objects.request_send(user)
+    result = list(map(lambda x: x.receiver, all_profiles))
+    is_empty = False
+    if len(result) == 0:
+        is_empty = True
 
-    context = {'all_profiles': all_profiles}
+    context = {'all_profiles': result, 'is_empty': is_empty, }
 
     return render(request, 'userprofile/torequest.html', context)
+
 
 @login_required
 def profiles_list_view(request):
@@ -82,6 +92,7 @@ def profiles_list_view(request):
     context = {'all_profiles': all_profiles}
 
     return render(request, 'userprofile/allprofiles.html', context)
+
 
 class UserProfileView (LoginRequiredMixin, DetailView):
     model = Profile
@@ -143,7 +154,7 @@ class ProfileListView(LoginRequiredMixin, ListView):
 
 @login_required
 def send_request(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         pk = request.POST.get('profile_pk')
         user = request.user
         sender = Profile.objects.get(user=user)
@@ -153,6 +164,20 @@ def send_request(request):
 
         return redirect(request.META.get('HTTP_REFERER'))
     return redirect('userprofile:profile_page_view')
+
+@login_required
+def cancel_request(request):
+    if request.method == 'POST':
+        pk = request.POST.get('profile_pk')
+        user = request.user
+        sender = Profile.objects.get(user=user)
+        receiver = Profile.objects.get(pk=pk)
+
+        fs = Friendship.objects.get(sender=sender, receiver=receiver, status='send')
+        fs.delete()
+
+        return redirect(request.META.get('HTTP_REFERER'))
+    return redirect('userprofile:request_profiles_list_view')
 
 @login_required
 def unfriend(request):
@@ -169,3 +194,19 @@ def unfriend(request):
 
         return redirect(request.META.get('HTTP_REFERER'))
     return redirect('userprofile:profile_page_view')
+
+@login_required
+def user_posts(request):
+    user = request.user
+    ups = Post.objects.all().filter(author=user)
+
+    # len_posts = False
+    # if not len(ups) == 0:
+    #     len_posts = True
+
+    # context2 = {
+    #     'ups': ups,
+    #     'len_posts': len_posts
+    # }
+
+    return render(request, 'userprofile/profilepage.html', {'ups': ups,})

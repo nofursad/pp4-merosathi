@@ -115,3 +115,9 @@ class UpdatePost(LoginRequiredMixin, UpdateView):
             form.add_error(None, 'You are not author of the post')
             return super().form_invalid(form)
 
+# @login_required
+# def user_post(request):
+#     user = request.author.user
+#     user_all_post = Post.objects.all().filter(author=user)
+
+#     return user_all_post

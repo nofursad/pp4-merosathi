@@ -11,30 +11,29 @@ No Other profile exist
 
 
 {% for profile in all_profiles %}
-    <div class="ui segment">
-        <div class="ui grid">
-            <div class="row">
-                <div class="four wide column">
-                    <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
-                </div>
-                <div class="twelve wide column">
-                    <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
-                    <p>{{ profile.bio }}</p>
-                    <a href="{{ profile.get_absolute_url }}">
-                        <button class="ui primary button mb-5 bwide-big">View Profile</button>
-                    </a>
-                    <br>
+{% if profile.user not in req_receiver and profile.user not in req_sender %}
+<div class="ui segment">
+    <div class="ui grid">
+        <div class="row">
+            <div class="four wide column">
+                <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
+            </div>
+            <div class="twelve wide column">
+                <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+                <p>{{ profile.bio }}</p>
+                <a href="{{ profile.get_absolute_url }}">
+                    <button class="ui primary button mb-5 bwide-big">View Profile</button>
+                </a>
+                <br>
 
-                    {% if profile.user not in req_receiver and profile.user not in req_sender %}
-                        <form action="{% url 'userprofile:send_request' %}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
-                            <button type="submit" class="ui positive basic button bwide-big"><i
-                                    class="plus square icon"></i>Add as Friend</button>
-                        </form>
-                    {% endif %}
+                <form action="{% url 'userprofile:send_request' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                    <button type="submit" class="ui positive basic button bwide-big"><i
+                            class="plus square icon"></i>Add as Friend</button>
+                </form>
 
-                    {% if profile.user in req_receiver and request.user not in profile.friends.all %}
+                <!-- {% if profile.user in req_receiver and request.user not in profile.friends.all %}
                     <button class="ui disabled button bwide-big"><i class="user icon"></i>Friend
                         Request sent</button>
                     {% endif %}
@@ -46,11 +45,12 @@ No Other profile exist
                             <button type="submit" class="ui negative basic button bwide-big"><i
                                     class="minus square icon"></i>Remove as Friend</button>
                         </form>
-                    {% endif %}
-                </div>
+                    {% endif %} -->
             </div>
         </div>
     </div>
+</div>
+{% endif %}
 {% endfor %}
 
 
