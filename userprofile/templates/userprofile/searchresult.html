@@ -8,8 +8,50 @@ Profile List
 <h1>Test searchreasult page</h1>
 
 {% if result %}
-    <h1>you searched for {{ result }}</h1>
+{% if result_profile %}
+    {% for profile in result_profile %}
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="four wide column">
+                    <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
+                </div>
+                <div class="twelve wide column">
+                    <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+                    <p>{{ profile.bio }}</p>
+                    <a href="{{ profile.get_absolute_url }}">
+                        <button class="ui primary button mb-5 bwide-big">View Profile</button>
+                    </a>
+    
+                    <!-- <form action="{% url 'userprofile:send_request' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                        <button type="submit" class="ui positive basic button bwide-big"><i
+                                class="plus square icon"></i>Add as Friend</button>
+                    </form>
+    
+                    {% if profile.user in req_receiver and request.user not in profile.friends.all %}
+                        <button class="ui disabled button bwide-big"><i class="user icon"></i>Friend
+                            Request sent</button>
+                        {% endif %}
+    
+                        {% if request.user in profile.friends.all %}
+                            <form action="{% url 'userprofile:unfriend' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
+                                <button type="submit" class="ui negative basic button bwide-big"><i
+                                        class="minus square icon"></i>Remove as Friend</button>
+                            </form>
+                        {% endif %} -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <h3>No Matching result found.</h3>
+{% endif %}
 {% else%}
-    <h1>you searched nothing</h1>
+    <h3>you searched for nothing</h3>
 {% endif %}
 {% endblock content %}

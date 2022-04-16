@@ -198,8 +198,8 @@ def unfriend(request):
 @login_required
 def searchresult(request):
     if request.method == 'POST':
-        result = request.POST['result']
-        result_profile = Profile.objects.filter(Q(first_name__contains=result) | Q(last_name__contains=result))
+        result = request.POST['search']
+        result_profile = Profile.objects.all().filter(Q(first_name__icontains=result) | Q(last_name__icontains=result))
         context = {
             'result': result,
             'result_profile': result_profile

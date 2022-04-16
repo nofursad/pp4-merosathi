@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="item">
-                <form action="{{ path_to_searchresult }}" method="GET">
+                <form action="{% url 'userprofile:searchresult' %}" method="POST">
                     {% csrf_token %}
                     <div class="ui action left icon input">
                         <input class="prompt" type="text" name='search'

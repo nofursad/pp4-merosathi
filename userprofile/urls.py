@@ -27,6 +27,6 @@ urlpatterns = [
     path('unfriend/', unfriend, name='unfriend'),
     path('request/acceptrequest/', accept_request, name='accept_request'),
     path('request/rejectrequest/', reject_request, name='reject_request'),
-    path('<slug>/', UserProfileView.as_view(), name='user_profile_view'),
     path('searchresult/', searchresult, name='searchresult'),
+    path('<slug>/', UserProfileView.as_view(), name='user_profile_view'),
 ]
