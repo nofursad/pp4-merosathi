@@ -3,6 +3,7 @@
 {% url 'userprofile:profiles_list_view' as path_to_allprofile %}
 {% url 'userprofile:request_profiles_list_view' as path_to_addfriend %}
 {% url 'userprofile:request_received_view' as path_to_acceptfriend %}
+{% url 'userprofile:searchresult' as path_to_searchresult %}
 
 
 <!-- Modal for sign out confirmation -->
@@ -55,9 +56,10 @@
                 </div>
             </div>
             <div class="item">
-                <form action="" method="GET">
+                <form action="{{ path_to_searchresult }}" method="GET">
+                    {% csrf_token %}
                     <div class="ui action left icon input">
-                        <input class="prompt" type="text" name='q'
+                        <input class="prompt" type="text" name='search'
                             placeholder="name of a friend...">
                         <i class="search icon"></i>
                         <button type='submit' class="ui button">Search</button>

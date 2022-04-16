@@ -30,14 +30,14 @@ Posts
             {% endifequal%}
         </div>
         <img class="ui avatar image" src="{{post.author.avatar.url}}">
-        <strong>{{ post.author.user }}</strong>
+        <strong>{{ post.author.first_name }}</strong>
         <div class="meta">
             {{ post.created_on|timesince}} ago
         </div>
     </div>
     <div class="content">
         {% if post.image.url %}
-        <img alt class="image w-100" src="{{ post.image.url }}">
+        <img alt class="ui big image" src="{{ post.image.url }}">
         {% endif %}
         <p>{{ post.content }}</p>
     </div>
@@ -68,7 +68,7 @@ Posts
                 <div class="ui segment transition hidden raised">
                     <div class="content">
                         <img class="ui avatar image" src="{{comment.user.avatar.url}}">
-                        <strong>{{ comment.user.user }}</strong>
+                        <strong>{{ comment.user.first_name }}</strong>
                         <div class="meta">{{ comment.created_on|timesince}} ago</div>
                         <div class="ui divider"></div>
                         <div class="content">{{ comment.body }}</div>

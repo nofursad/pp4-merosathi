@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Profile List
+{% endblock title %}
+
+{% block content %}
+<h1>Test searchreasult page</h1>
+
+{% if result %}
+    <h1>you searched for {{ result }}</h1>
+{% else%}
+    <h1>you searched nothing</h1>
+{% endif %}
+{% endblock content %}

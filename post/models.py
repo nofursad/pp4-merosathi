@@ -6,7 +6,7 @@ from userprofile.models import Profile
 
 class Post(models.Model):
     content = models.TextField()
-    image = CloudinaryField('image', validators=[FileExtensionValidator(['png', 'jpeg', 'jpg', 'gif', 'svg'])], blank=True)
+    image = CloudinaryField('image', blank=True)
     liked = models.ManyToManyField(Profile, blank=True, related_name='likes')
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)

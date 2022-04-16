@@ -196,17 +196,14 @@ def unfriend(request):
     return redirect('userprofile:profile_page_view')
 
 @login_required
-def user_posts(request):
-    user = request.user
-    ups = Post.objects.all().filter(author=user)
-
-    # len_posts = False
-    # if not len(ups) == 0:
-    #     len_posts = True
-
-    # context2 = {
-    #     'ups': ups,
-    #     'len_posts': len_posts
-    # }
-
-    return render(request, 'userprofile/profilepage.html', {'ups': ups,})
+def searchresult(request):
+    if request.method == 'POST':
+        result = request.POST['result']
+        result_profile = Profile.objects.filter(Q(first_name__contains=result) | Q(last_name__contains=result))
+        context = {
+            'result': result,
+            'result_profile': result_profile
+        }
+        return render(request, 'userprofile/searchresult.html', context)
+    else:
+        return render(request, 'userprofile/searchresult.html', {})
