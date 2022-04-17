@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,18 +11,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- link to Semantic UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+    </script>+
+
+    <!-- link to fontawesom -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css"
+        integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href={% static 'style.css' %} type="text/css">
 
     <title>Mero Sathi | {% block title %}{% endblock title %}</title>
 
 </head>
+
 <body>
 
     {% if request.user.is_authenticated %}
-        {% include 'main/navbar.html' %}
+    {% include 'main/navbar.html' %}
     {% endif %}
 
     <div class="ui container">
@@ -33,7 +44,8 @@
 
     {% block script %}
     {% endblock script%}
-    
+
     <script type="text/javascript" src={% static 'main.js' %}></script>
 </body>
+
 </html>
