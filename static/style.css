@@ -53,3 +53,25 @@ body {
 .comment-box {
     max-width: 500px !important;
 }
+
+.f-screen {
+    display: inline-block !important;
+}
+
+.s-screen {
+    display: none !important;
+}
+
+.bluee {
+    background-color: 396afc !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .s-screen {
+        display: inline-block !important;
+    }
+    .f-screen {
+        display: none !important;
+    }
+  }

@@ -26,7 +26,7 @@
 </div> -->
 
 
-<div class="ui inverted menu nav mb-7">
+<!-- <div class="ui fixed inverted menu nav">
     <div class="ui container">
         <a href="{{ path_to_post }}"
             class="{% if request.path == path_to_home %} active {% endif %} item">
@@ -72,8 +72,70 @@
                 <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
                 {{ fname }}
             </a>
-            <a href="{% url 'account_logout' %}" class="ui item" id="sign-out">
+            <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
                 Logout
+            </a>
+        </div>
+    </div>
+</div> -->
+
+<div class="ui inverted menu nav mb-7 top fixed">
+    <div class="ui container">
+        <a href="{{ path_to_post }}"
+            class="{% if request.path == path_to_home %} active {% endif %} item">
+            <div class="f-screen"><h3>Merosathi</h3></div>
+            <div class="s-screen"><h4>Merosathi</h4></div>
+        </a>
+        <div class="right menu">
+            <div class="item">
+                <form action="{% url 'userprofile:searchresult' %}" method="POST" class="f-screen">
+                    {% csrf_token %}
+                    <div class="ui action left icon input">
+                        <input class="prompt" type="text" name='search'
+                            placeholder="name of a friend...">
+                        <i class="search icon"></i>
+                        <button type='submit' class="ui button">Search</button>
+                    </div>
+                </form>
+                <div class="s-screen">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui teal buttons">
+                    <div class="ui button f-screen">Friends</div>
+                    <div class="ui floating dropdown icon button">
+                        <i class="dropdown icon f-screen"></i>
+                        <i class="fa-solid fa-user-group s-screen"></i>
+                        <div class="menu">
+                            <a href="{{ path_to_allprofile }}"
+                                class="{% if request.path == path_to_allprofile %} active {% endif %} item">
+                                All Profiles
+                            </a>
+                            <a href="{{ path_to_addfriend }}"
+                                class="{% if request.path == path_to_addfriend %} active {% endif %} item">
+                                Add Friends&nbsp;
+                                <div class="ui purple horizontal label">{{ request_send_num }}
+                                </div>
+                            </a>
+                            <a href="{{ path_to_acceptfriend }}"
+                                class="{% if request.path == path_to_acceptfriend %} active {% endif %} item">
+                                Friends Request Received&nbsp;
+                                <div class="ui purple horizontal label">{{ request_rec_num }}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="{{ path_to_userprofile }}"
+                class="{% if request.path == path_to_userprofile %} active {% endif %} item">
+                <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
+                <div class="f-screen">{{ fname }}</div>
+            </a>
+            <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
+                <div class="f-screen">Logout</div>
+                <i class="fa-solid fa-right-from-bracket s-screen"></i>
             </a>
         </div>
     </div>
