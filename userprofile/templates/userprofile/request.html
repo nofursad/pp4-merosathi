@@ -12,7 +12,7 @@ Requests
     {% for request in request_list %}
         <div class="ui segment">
             <div class="ui grid">
-                <div class="row">
+                <div class="ui row stackable">
                     <div class="four wide column">
                         <img src="{{ request.avatar.url }}" alt="" class="ui rounded fluid image">
                         <a href="{{ request.get_absolute_url }}">

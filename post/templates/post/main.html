@@ -18,7 +18,7 @@ Posts
 
 {% for post in post_content %}
 <div class="ui card w-100">
-    <div class="content">
+    <div class="content p-5">
         <div class="right floated meta">
             {% ifequal request.user post.author.user %}
             <a href="{% url 'post:update-post' post.pk %}">
@@ -29,10 +29,25 @@ Posts
             </a>
             {% endifequal%}
         </div>
-        <img class="ui avatar image" src="{{post.author.avatar.url}}">
+        <!-- <img class="ui avatar image" src="{{post.author.avatar.url}}">
         <strong>{{ post.author.first_name }}</strong>
         <div class="meta">
             {{ post.created_on|timesince}} ago
+        </div> -->
+        <div class="ui comments">
+            <div class="comment">
+                <div class="ui avatar image">
+                    <img src="{{post.author.avatar.url}}">
+                </div>
+                <div class="content">
+                    <div>
+                        <a class="author">&nbsp;&nbsp;{{ post.author.first_name }}</a>
+                    </div>
+                    <div class="metadata">
+                        <span class="date">{{ post.created_on|timesince}} ago</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="content">
@@ -64,17 +79,24 @@ Posts
                 {{ post.number_comments}} comments
             </div>
             <div class="content">
-                {% for comment in post.comment_set.all %}
-                <div class="ui segment transition hidden raised">
-                    <div class="content">
-                        <img class="ui avatar image" src="{{comment.user.avatar.url}}">
-                        <strong>{{ comment.user.first_name }}</strong>
-                        <div class="meta">{{ comment.created_on|timesince}} ago</div>
-                        <div class="ui divider"></div>
-                        <div class="content">{{ comment.body }}</div>
+                <div class="ui comments">
+                    {% for comment in post.comment_set.all %}
+                    <div class="ui comment segment transition raised p-5">
+                        <div class="avatar">
+                            <img class="ui avatar" src="{{comment.user.avatar.url}}">
+                        </div>
+                        <div class="content">
+                            <a class="author">{{ comment.user.first_name }}</a>
+                            <div class="metadata">
+                                <span class="date">{{ comment.created_on|timesince}} ago</span>
+                            </div>
+                            <div class="text">
+                                {{ comment.body }}
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
         {% else %}

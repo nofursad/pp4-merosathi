@@ -12,7 +12,7 @@ Send Requests
     {% for profile in all_profiles %}
         <div class="ui segment">
             <div class="ui grid">
-                <div class="row">
+                <div class="ui row stackable">
                     <div class="four wide column">
                         <img src="{{ profile.avatar.url }}" alt="" class="ui rounded fluid image">
                         <a href="{{ profile.get_absolute_url }}">

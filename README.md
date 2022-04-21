@@ -8,7 +8,7 @@ User can create their own profile and post the pictures as well as posts. They c
 
 User can edit or delete the posts as well as picture which they posted. User can like or comment on the post or picture that are posted by other user but they can't edit/delete the post created by other user.
 
-![Mockup](documentation/supp-images/amiresponsive.png)
+<!-- ![Mockup](images/amiresponsive.png) Image to be inserted -->
 
 ## Index – Table of Contents
 * [User Experience (UX)](#user-experience-ux) 
@@ -60,38 +60,27 @@ User can edit or delete the posts as well as picture which they posted. User can
 
 -   __F01 Navigation Bar__
     
-    The navigation bar has a consistent look and placement each page supporting easy and intuitive navigation.  It includes a Logo, and a link to the Home page. If the user is not signed in then links are available to the Register and Sign in pages.  If a user is signed in then the links available, in addition to the Home link, are for My Bookings and Sign out; and the active username and a user icon are also displayed.
+    Navigation Bar  
     
-    If the user signed in is the admin user then an additional link of Admin is also shown on the navigation bar.  This link takes the user to the Django Admin screens where data in the underlying database can be added, retrieved, modified and deleted.
+    <!-- ![Navbar Full](images/f01-nav-bar-1.png) Image to be inserted -->
+    <!-- ![Navbar Full Signed in](images/f01-nav-bar-2.png) Image to be inserted -->
+
+-   __F05 Comment on Post__
     
-    The navigation bar is responsive on multiple screen sizes - on smaller screens it coverts to a 'burger' menu style.  
+    Comment on Post
+
+    <!-- ![Hike Comment](images/f05-comment.png)  Image to be inserted-->
+
+-   __F06 Like a Post__
+    In order to like a post a user must be signed in.  A post can be liked on its post page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
+
+    <!-- ![Like Hike](images/f06-like-post.png)  Image to be inserted -->
+
+-   __F09 Delete a Post__
     
-    ![Navbar Full](documentation/supp-images/f01-nav-bar-1.png)
-    ![Navbar Full Signed in](documentation/supp-images/f01-nav-bar-2.png)
-    ![Navbar Burger](documentation/supp-images/f01-nav-bar-3.png)
+    Delete a post that is posted
 
--   __F05 Comment on hike__
-    
-    In order to comment on a hike a user must be signed in.  A comment can be added on any Hike Detail page.  The user enters their comment in a text box under the hike description and clicks on Submit.  The comment must be approved by the admin user before it will be visible on the Hike Detail page.  
-    
-    To approve comments the admin user logs in to the admin pages, opens the Comments table, selects the comment(s) to be approved, chooses the 'Approve Comments' action from the drop-down menu and clicks 'Go'.  Alternatively, they can be approved one at a time by clicking on the comment row to open it, updating the value in the approved field and saving the update.
-    
-    All comments approved for a hike are shown on that hike's Hike Detail page in the order of newest first.
-
-    ![Hike Comment](documentation/supp-images/f05-hike-comment.png)
-
-    ![Approve Hike Comment](documentation/supp-images/f05-approve-hike-comment.png)
-
--   __F06 Like a hike__
-    In order to like a hike a user must be signed in.  A hike can be liked on its Hike Detail page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
-
-    ![Like Hike](documentation/supp-images/f06-like-hike.png)
-
--   __F09 Cancel a hike booking__
-    
-    To cancel a hike booking the user that booked the hike must be signed in.  They can view the hike booking on the My Bookings table and cancel by clicking on the Cancel Hike button associated with the booking.  The user will be prompted to confirm that they really want to cancel to prevent them accientally deleting their booking.  Bookings with a scheduled date in the past cannot be cancelled.
-
-    ![Cancel Booking](documentation/supp-images/f09-cancel-booking.png)
+    <!-- ![Cancel Booking](images/f09-delete-post.png) Image to be inserted -->
 
 -   __F10 User authentication__
     
@@ -100,45 +89,36 @@ User can edit or delete the posts as well as picture which they posted. User can
     - User Registration
       - A user needs to be registered before they can sign in.  The option to Register appears on the navigation bar when no user is currently signed in.  To Register, the user needs to provide a) a username which has not already been registered, b) an optional email address (if this is provided then it needs to be an email address that is not already registered) and c) a password which they must enter twice.  Once registered a user can sign in.
 
-        ![Register User](documentation/supp-images/f10-register-user.png)
+        <!-- ![Register User](images/f10-register-user.png) Image to be inserted -->
 
     - User Sign in
       - Once registered a user can sign in and will have access to extra functionality, namely :
-        - can comment on a hike
-        - can like a hike
-        - can book and cancel hikes
+        - can comment on a post
+        - can like a post
+        - can book and delete post.
 
-      - To sign in the user must provide a) a registered username and b) the password for the username
+      - To sign in the user must provide a) a registered email-id and b) the password for the email-id
      
-        ![Sign in User](documentation/supp-images/f11-signin-user.png)
+        <!-- ![Sign in User](images/f11-signin-user.png) Image to be inserted -->
       
     - User Sign out
-      - A signed in user can sign out by clicking on the Sign out link on the navigation bar.  The user simply needs to confirm the action by clicking on the Sign out button on the page.
+      - A signed in user can sign out by clicking on the logout button on the navigation bar.  The user simply needs to confirm the action by clicking on the Sign out button on the page.
 
-        ![Sign out User](documentation/supp-images/f12-signout-user.png)
+        <!-- ![Sign out User](images/f12-signout-user.png) Image to be inserted -->
 
--   __F11 Add and Publish a hike__
+-   __F11 Add a post__
     
-    The admin user adds and publishes hikes using the admin pages.  The admin user can access these pages either by appending '/admin' to the application url or by signing in to the application and clicking on the Admin link that appears on the navigation bar only when admin is signed in.
+    Add a post
 
-    To add a new hike, the admin user can use the "+ Add" link to the right of the Hike table name and then fill in the data fields for the hike.  Hike titles must be unique and a slug will be automatically generated as the title is typed in.   A rich editor (summernote) is made available for the hike description content field so that formatting can be easily added.  Hike difficulty is selected from a drop-down list and the distance and duration numbers are rounded to 2 decimal places.  A default image will be used for the hike if the admin user does not upload one.  Hikes can be saved with a status of Draft (default) and will not be visible to general users until this status is updated to Published - this allows the admin to save a hike a WIP and finish it later.
-
-    ![Add a hike](documentation/supp-images/f13-add-a-hike.png)
+    <!-- ![Add a post](images/f13-add-a-post.png) Image to be inserted -->
 
 -   __F13 On-screen messages__
     
     To enhance usability of the application, user messages appear on-screen to confirm when certain actions have happened or report on problems.  For successful operations, a message will appear at the top of the screen and then fade-out/slide-up after 5 seconds.  For problems logging in, messages will appear in red text on-screen and stay until a user attempts the operation again.
 
-    ![Message example 1](documentation/supp-images/f15-message-example-1.png)
+    <!-- ![Message example 1](images/f15-message-example-1.png) Image to be inserted -->
 
-    ![Message example 2](documentation/supp-images/f15-message-example-2.png)
-
-
--   __How these features support the user stories__
-    
-    The User Stories in the [User Experience (UX)](#user-experience-ux) part of this document are numbered 1 to 17.  The existing features are listed above as F01 to F13.  Below is a traceability matrix cross-referencing the user stories with the features, illustrating which features support which stories :
-        
-    ![User Story Feature Matrix](documentation/supp-images/traceability-matrix.png)
+    <!-- ![Message example 2](images/f15-message-example-2.png) Image to be inserted -->
 
 
 ### Features which could be implemented in the future
@@ -172,49 +152,14 @@ User can edit or delete the posts as well as picture which they posted. User can
     <details>
     <summary>Desktop Wireframes</summary>
 
-    ![Desktop Wireframes](documentation/wireframes/desktop.png)
-    </details>
-    <details>
-    <summary>Tablet Wireframes</summary>
-
-    ![Tablet Wireframes](documentation/wireframes/ipad.png)
-    </details>
-    <details>
-    <summary>Smartphone Wireframes</summary>
-
-    ![Smartphone Wireframes](documentation/wireframes/smartphone.png)
-    </details>
-
--   ### Entity-Relationship diagrams for DBMS
-    
-      Notes on the ER diagrams :
-
-      - The ER diagrams provided show the logical data model.  The many-to-many relationship between hikes and their 'likes' is represented as normalized tables to clarify the relationship.  In the models.py file the 'likes' data item is declared as part of the Hike class, with django handling how this relationship is represented in the physical database tables in the background.
-
-      - The Users table in the ER diagrams is also a logical representation of the data captured during user registration and how it relates to the application data model.  The Users table itself is not declared in the models.py file, but is handled by the django modules and this logical view does not reflect all columns and constraints etc. used by the physical data tables in the database.
-
-      - The data model tables are split into two diagrams so that the relationships between the tables can be easily read.
-
-      - A booking is a many-to-many relationship between Schedule and Users but because it also has its own data - places_reserved, it is declared in its own separate class in models.py
-
-      - Because there could be multiple guided hikes on the same hike trail in a single day, the schedule table needs a composite primary key of the hike_id and 'starts' column.  This is handled using a constraint in models.py.
-
-    <details>
-    <summary>ER Diagrams - Hike-Comment-Likes</summary>
-
-    ![ER Diagrams1](documentation/entity-relationship-diagrams/hike-comment-likes.png)
-    </details>
-    <details>
-    <summary>ER Diagrams - Hike-Schedule-Booking</summary>
-
-    ![ER Diagrams2](documentation/entity-relationship-diagrams/hike-schedule-booking.png)
+    <!-- ![Desktop Wireframes](images/wireframes/desktop.png) Image to be inserted -->
     </details>
 
 ## Planning
 
 A GitHub Project with linked Issues was used as the Agile tool for this project.  User Stories with acceptance criteria were defined using GitHub Issues and development of code for these stories was managed using a Kanban board.  All of the User Stories were linked to a 'parent' Epic issue to show how they all supported the over-arching goal of the project.  The acceptance criteria were tested as each story moved to 'Done' and were also included in the final pre-submission manual testing documented in the Testing section of this README.
 
-The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile Tool](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/projects/1)
+The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile Tool](https://github.com/nofursad/pp4-merosathi/projects/1)
 
 
 ## Technologies Used
@@ -235,19 +180,17 @@ The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile 
 -   [dbdiagram.io](https://dbdiagram.io/home) was used to create the Entity Relationship diagrams for the application data model
 -   [Balsamiq:](https://balsamiq.com/) was used to create the wireframes during the design process.
 -   [Django](https://www.djangoproject.com/) was used as the framework to support rapid and secure development of the application
--   [Bootstrap](https://getbootstrap.com/) was used to build responsive web pages
+-   [Sementic UI](https://semantic-ui.com/) was used to build responsive web pages
 -   [Gunicorn](https://gunicorn.org/) was used as the Web Server to run Django on Heroku
 -   [dj_database_url](https://pypi.org/project/dj-database-url/) library used to allow database urls to connect to the postgres db
 -   [psycopg2](https://pypi.org/project/psycopg2/) database adapter used to support the connection to the postgres db
 -   [Cloudinary](https://cloudinary.com/) used to store the images used by the application
--   [Summernote](https://pypi.org/project/django-summernote/) used to provide WYSIWYG editing on the Hike editing screen
 -   [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html) used for account registration and authentication
 -   [Django crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to simplify form rendering
 -   [jquery library](https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js) used to fade out alert messages
 -   [Django testing tools](https://docs.djangoproject.com/en/3.2/topics/testing/tools/) used for python mvt testing
 -   [Jest](https://jestjs.io/) - used to test jquery in script.js
--   [coverage](https://coverage.readthedocs.io/en/coverage-5.5/) used to check how much of the python code has been covered by 
-automated tests
+-   [coverage](https://coverage.readthedocs.io/en/coverage-5.5/) used to check how much of the python code has been covered by automated tests
 
 ## Testing
 
@@ -261,55 +204,55 @@ automated tests
       - <details>
         <summary>Index Page - Summary</summary>
 
-        ![Index Page - Summary](documentation/testing/validation/html-validation-img-rendered-index-page.png)
+        <!-- ![Index Page - Summary](documentation/testing/validation/html-validation-img-rendered-index-page.png)Image to be uploaded later -->
       </details>
 
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-index-page.pdf" target="_blank">Index Page - Full HTML Validation Results</a>
+      - <a href="#" target="_blank">Index Page - Full HTML Validation Results</a>
 
     - results for hike_detail.html
       - <details>
         <summary>Hike Detail Page - Summary</summary>
 
-        ![Hike Detail Page - Summary](documentation/testing/validation/html-validation-img-rendered-detail-page.png)
+        <!-- ![Hike Detail Page - Summary](documentation/testing/validation/html-validation-img-rendered-detail-page.png)Image to be uploaded later -->
       </details>
 
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-detail-page.pdf" target="_blank">Hike Detail Page - Full HTML Validation Results</a>
+      - <a href="#" target="_blank">Hike Detail Page - Full HTML Validation Results</a>
 
     - results for hike_mybookings.html
       - <details>
         <summary>My Bookings Page - Summary</summary>
 
-        ![My Bookings Page - Summary](documentation/testing/validation/html-validation-img-rendered-bookings-page.png)
+        <!-- ![My Bookings Page - Summary](documentation/testing/validation/html-validation-img-rendered-bookings-page.png)Image to be uploaded later -->
       </details>
 
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-bookings-page.pdf" target="_blank">My Bookings Page - Full HTML Validation Results</a>
+      - <a href="#" target="_blank">My Bookings Page - Full HTML Validation Results</a>
 
     - results for signup.html
       - <details>
         <summary>Signup/Register Page - Summary</summary>
 
-        ![Signup/Register Page - Summary](documentation/testing/validation/html-validation-img-rendered-register-page.png)
+        <!-- ![Signup/Register Page - Summary](documentation/testing/validation/html-validation-img-rendered-register-page.png)Image to be uploaded later -->
       </details>
 
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-signup-page.pdf" target="_blank">Signup/Register Page - Full HTML Validation Results</a>
+      - <a href="#" target="_blank">Signup/Register Page - Full HTML Validation Results</a>
 
     - results for login.html
       - <details>
         <summary>Login/Sign in Page - Summary</summary>
 
-        ![Login/Sign in Page - Summary](documentation/testing/validation/html-validation-img-rendered-login-page.png)
+        <!-- ![Login/Sign in Page - Summary](documentation/testing/validation/html-validation-img-rendered-login-page.png)Image to be uploaded later -->
       </details>
       
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-login-page.pdf" target="_blank">Login/Sign in Page - Full HTML Validation Results</a>
+      - <a href="#" target="_blank">Login/Sign in Page - Full HTML Validation Results</a>
 
     - results for logout.html
       - <details>
         <summary>Logout/Sign out Page - Summary</summary>
 
-        ![Logout/Sign out Page - Summary](documentation/testing/validation/html-validation-img-rendered-logout-page.png)
+        <!-- ![Logout/Sign out Page - Summary](documentation/testing/validation/html-validation-img-rendered-logout-page.png)Image to be uploaded later -->
       </details>
       
-      - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/html-validation-rendered-logout-page.pdf" target="_blank">Logout/Sign out Page - Full HTML Validation Results</a>  
+      - <a href="#" target="_blank">Logout/Sign out Page - Full HTML Validation Results</a>  
   
 
 - [CSS Validator](https://jigsaw.w3.org/css-validator/)
@@ -317,10 +260,10 @@ automated tests
     - <details>
       <summary>style.css validation results</summary>
 
-      ![style.css](documentation/testing/validation/css-validation-img1.png)
+      <!-- ![style.css](documentation/testing/validation/css-validation-img1.png)Image to be uploaded later -->
       </details>
 
-    - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/7c58bd1b37673c319886014673d484dabf7299f2/documentation/testing/validation/css-validation-full-report.pdf" target="_blank">CSS Validation - Full Results</a> 
+    - <a href="#" target="_blank">CSS Validation - Full Results</a> 
 
 
 - [Javascript Validator](https://jshint.com/)
@@ -328,12 +271,12 @@ automated tests
   <details>
     <summary>script.js validation results</summary>
 
-    ![Script JS](documentation/testing/validation/jquery-code-validation.png)
+    <!-- ![Script JS](documentation/testing/validation/jquery-code-validation.png)Image to be uploaded later -->
   </details>
   <details>
     <summary>script.test.js validation results</summary>
 
-    ![Script Test JS](documentation/testing/validation/jquery-test-validation.png)
+    <!-- ![Script Test JS](documentation/testing/validation/jquery-test-validation.png)Image to be uploaded later -->
   </details>
 
 - [Python Validator](http://pep8online.com/)
@@ -341,57 +284,57 @@ automated tests
   <details>
     <summary>project urls.py validation results</summary>
 
-    ![Project urls.py](documentation/testing/validation/pep8-validation-project-urls.png)
+    <!-- ![Project urls.py](documentation/testing/validation/pep8-validation-project-urls.png)Image to be uploaded later -->
   </details>
   <details>
     <summary>project settings.py validation results</summary>
 
-    ![Project settings.py](documentation/testing/validation/pep8-validation-project-settings.png)
+    <!-- ![Project settings.py](documentation/testing/validation/pep8-validation-project-settings.png)Image to be uploaded later -->
   </details>
   <details>
     <summary>application urls.py validation results</summary>
 
-    ![Application urls.py](documentation/testing/validation/pep8-validation-app-urls.png)
+    <!-- ![Application urls.py](documentation/testing/validation/pep8-validation-app-urls.png) -->
   </details>
   <details>
     <summary>admin.py validation results</summary>
 
-    ![admin.py](documentation/testing/validation/pep8-validation-admin.png)
+    <!-- ![admin.py](documentation/testing/validation/pep8-validation-admin.png) -->
   </details>
   <details>
     <summary>forms.py validation results</summary>
 
-    ![forms.py](documentation/testing/validation/pep8-validation-forms.png)
+    <!-- ![forms.py](documentation/testing/validation/pep8-validation-forms.png) -->
   </details>
   <details>
     <summary>models.py validation results</summary>
 
-    ![models.py](documentation/testing/validation/pep8-validation-models.png)
+    <!-- ![models.py](documentation/testing/validation/pep8-validation-models.png) -->
   </details>
   <details>
     <summary>views.py validation results</summary>
 
-    ![views.py](documentation/testing/validation/pep8-validation-views.png)
+    <!-- ![views.py](documentation/testing/validation/pep8-validation-views.png) -->
   </details>
   <details>
     <summary>test_admin.py validation results</summary>
 
-    ![test_admin.py](documentation/testing/validation/pep8-validation-test_admin.png)
+    <!-- ![test_admin.py](documentation/testing/validation/pep8-validation-test_admin.png) -->
   </details>
   <details>
     <summary>test_forms.py validation results</summary>
 
-    ![test_forms.py](documentation/testing/validation/pep8-validation-test_forms.png)
+    <!-- ![test_forms.py](documentation/testing/validation/pep8-validation-test_forms.png) -->
   </details>
   <details>
     <summary>test_models.py validation results</summary>
 
-    ![test_models.py](documentation/testing/validation/pep8-validation-test_models.png)
+    <!-- ![test_models.py](documentation/testing/validation/pep8-validation-test_models.png) -->
   </details>
   <details>
     <summary>test_views.py validation results</summary>
 
-    ![test_views.py](documentation/testing/validation/pep8-validation-test_views.png)
+    <!-- ![test_views.py](documentation/testing/validation/pep8-validation-test_views.png) -->
   </details>
   
 
@@ -412,7 +355,7 @@ automated tests
       - [admin.py](hikebooker/admin.py)  test file: [test_admin.py](hikebooker/test_admin.py)  (tests were added for the customizations made to the django admin functionality)
 
   - Django test results and coverage :   
-    ![Python Test Results](documentation/testing/results/python-coverage-test-results.png)
+    <!-- ![Python Test Results](image/testing/results/python-coverage-test-results.png) -->
 
 
 ### Browser Compatibility
@@ -427,7 +370,7 @@ automated tests
 
 - The link below details the test cases that were used, the results, and a cross-reference to the Feature ID that each test case exercised (click link to open pdf).  The test cases are primarily based on the User Story acceptance criteria that were used to test iterations of the code during development.
   
-  - <a href="https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/blob/517f5abbe2b0bd575b9da340f0560d13466340a4/documentation/testing/results/test-cases.pdf" target="_blank">Manual Testing - Test Cases and Results</a>
+  - <a href="#" target="_blank">Manual Testing - Test Cases and Results</a>
 
 ### Known bugs
 
@@ -554,25 +497,12 @@ Once code changes have been completed and tested on localhost, the application c
 - Code on how to stop jquery animations for jest testing : [De-activate animations](https://stackoverflow.com/questions/61295452/jest-test-jquery-fadein-fadeout-on-specific-elements)
 
 ### Content 
-- Information on individual hikes was found on the Government of Canada - Parks Canada website : [Parks Canada](https://www.pc.gc.ca/en/pn-np/ab/banff/activ/randonee-hiking)
+- ???
 
 ### Media 
 - The Lato font used was imported from [Google Fonts](https://fonts.google.com/)
 - Fontawesome was used for icons, including icons for like, comments, user - [Font Awesome](https://fontawesome.com/)
 - The applicaiton favicon was created from the "exchange" icon image on [Font Awesome](https://fontawesome.com/) 
-- The default hike image : Photo by <a href="https://unsplash.com/@sickhews?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wes Hicks</a> on <a href="https://unsplash.com/s/photos/hiking-boots?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Jumbotron background image : Photo by <a href="https://unsplash.com/@stephenleo1982?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Stephen Leonardi</a> on <a href="https://unsplash.com/s/photos/hiking?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@caraventurera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cara Fuller</a> on <a href="https://unsplash.com/s/photos/hike-waterfall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@larisabirta?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Larisa Birta</a> on <a href="https://unsplash.com/s/photos/hike?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@kalenemsley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kalen Emsley</a> on <a href="https://unsplash.com/s/photos/hiking-canada?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@kalenemsley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kalen Emsley</a> on <a href="https://unsplash.com/s/photos/hiking-canada?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@hollymandarich?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Holly Mandarich</a> on <a href="https://unsplash.com/s/photos/hiking?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@toomastartes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Toomas Tartes</a> on <a href="https://unsplash.com/s/photos/hiking?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@kalenemsley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kalen Emsley</a> on <a href="https://unsplash.com/s/photos/hike?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@guernseyphotographer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Simon English</a> on <a href="https://unsplash.com/s/photos/hiking?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@wanderingteddybear?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ted Bryan Yu</a> on <a href="https://unsplash.com/s/photos/hiking?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Hike image : Photo by <a href="https://unsplash.com/@hiking_corgi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Vlad D</a> on <a href="https://unsplash.com/s/photos/hike-meadow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-- Background for Register, Sign in and Sign out : Photo by <a href="https://unsplash.com/@baileyzindel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bailey Zindel</a> on <a href="https://unsplash.com/s/photos/mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
   
 ### Acknowledgments
