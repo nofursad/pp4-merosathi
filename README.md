@@ -58,44 +58,22 @@ User can edit or delete the posts as well as picture which they posted. User can
 
 ### Existing Features
 
--   __F01 Navigation Bar__
-    
-    Navigation Bar  
-    
-    <!-- ![Navbar Full](images/f01-nav-bar-1.png) Image to be inserted -->
-    <!-- ![Navbar Full Signed in](images/f01-nav-bar-2.png) Image to be inserted -->
 
--   __F05 Comment on Post__
-    
-    Comment on Post
-
-    <!-- ![Hike Comment](images/f05-comment.png)  Image to be inserted-->
-
--   __F06 Like a Post__
-    In order to like a post a user must be signed in.  A post can be liked on its post page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
-
-    <!-- ![Like Hike](images/f06-like-post.png)  Image to be inserted -->
-
--   __F09 Delete a Post__
-    
-    Delete a post that is posted
-
-    <!-- ![Cancel Booking](images/f09-delete-post.png) Image to be inserted -->
-
--   __F10 User authentication__
+-   __F1 User authentication__
     
     The application provides the following user authentication related functions :
 
     - User Registration
-      - A user needs to be registered before they can sign in.  The option to Register appears on the navigation bar when no user is currently signed in.  To Register, the user needs to provide a) a username which has not already been registered, b) an optional email address (if this is provided then it needs to be an email address that is not already registered) and c) a password which they must enter twice.  Once registered a user can sign in.
+      - A user needs to be registered before they can sign in.  The option to Register appears on the sign in page. To Register, the user needs to provide a) a email address which has not already been registered, b) an username which should also be unique. And c) a password which they must enter twice.  Once registered a user can sign in.
 
         <!-- ![Register User](images/f10-register-user.png) Image to be inserted -->
 
     - User Sign in
       - Once registered a user can sign in and will have access to extra functionality, namely :
-        - can comment on a post
-        - can like a post
-        - can book and delete post.
+        - can post
+        - can edit or delete their own post.
+        - can like a post from other user.
+        - can comment on other user post.
 
       - To sign in the user must provide a) a registered email-id and b) the password for the email-id
      
@@ -106,13 +84,60 @@ User can edit or delete the posts as well as picture which they posted. User can
 
         <!-- ![Sign out User](images/f12-signout-user.png) Image to be inserted -->
 
--   __F11 Add a post__
+-   __F02 Navigation Bar__
     
-    Add a post
+    Navigation Bar only appear once the user have signed in using their registered email address and password. User will have a multiple link to go to post page, their own profile page, search for other user by their first / last name, view all profile, view friends request received as well as view friend request send to other user and Logout button to logout of their account.  
+    
+    <!-- ![Navbar Full](images/f01-nav-bar-1.png) Image to be inserted -->
+    <!-- ![Navbar Full Signed in](images/f01-nav-bar-2.png) Image to be inserted -->
 
-    <!-- ![Add a post](images/f13-add-a-post.png) Image to be inserted -->
+-   __F03 Publish a Post__
+    
+    Once registered and logged in into their account, user can publish the post with picture on their profile. The post will be available for other user to view. Other user can like/unlike post as well as comment on the post. User will have option to edit as well as delete their post.
 
--   __F13 On-screen messages__
+    <!-- ![Publish a Post](images/f05-comment.png)  Image to be inserted-->
+
+-   __F04 Like a Post__
+    In order to like a post a user must be signed in.  A post can be liked on post page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
+
+    <!-- ![Like Post](images/f06-like-post.png)  Image to be inserted -->
+
+-   __F05 Edit/Delete a Post__
+    
+    Once logged into their account, user will have option to edit or delete the post that they have published previously.
+
+    <!-- ![Edit/Delete a Post](images/f09-delete-post.png) Image to be inserted -->
+-   __F06 Search for other User__
+    
+    Once logged into their account, user will have option to search for the other user by their first or last name. User simply have to type the first or last name of other user that they want to search and click on search button or hit enter. Result of all matching profile will be displayed on the Result page.
+
+    <!-- ![Search for other User](images/f13-add-a-post.png) Image to be inserted -->
+
+-   __F07 View all User Profile__
+    
+    Once logged into their account, user will have option to view profile of all other user on the network who are not yet friend with user or have send/received the friend request. User will have an option to send friend request as well.
+
+    <!-- ![View all User Profile](images/f13-add-a-post.png) Image to be inserted -->
+
+-   __F08 View all Friend Request Send__
+    
+    Once logged into their account, user will have option to view all the friend request that logged in user have send to other user. When in the page, user also will have option to cancel the friend request if they decided that they no longer want to send a request.
+
+    <!-- ![View all Friend Request Send](images/f13-add-a-post.png) Image to be inserted -->
+
+-   __F09 View all Friend Request Received__
+    
+    Once logged into their account, user will have option to view all the friend request that logged in user have received from other user. When in the page, user also will have option to reject the friend request if they decided that they don't want to be a friend with the user that send a request.
+
+    <!-- ![View all Friend Request Received](images/f13-add-a-post.png) Image to be inserted -->
+
+-   __F10 View all Post__
+    
+    Once logged into their account, user will have option to view all the post that current logged in user as well as other user have posted in network. In this page, user can like and comment in other user's post where as can also edit and delete their own post.
+
+    <!-- ![View all Post](images/f13-add-a-post.png) Image to be inserted -->
+
+-   __F11s On-screen messages__
     
     To enhance usability of the application, user messages appear on-screen to confirm when certain actions have happened or report on problems.  For successful operations, a message will appear at the top of the screen and then fade-out/slide-up after 5 seconds.  For problems logging in, messages will appear in red text on-screen and stay until a user attempts the operation again.
 
