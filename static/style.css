@@ -83,6 +83,10 @@ body {
     width: 549px !important;
 }
 
+.main.container {
+    margin-top: 7em !important;
+}
+
 
 @media only screen and (max-width: 768px) {
     .s-screen {
@@ -90,6 +94,9 @@ body {
     }
     .f-screen {
         display: none !important;
+    }
+    .ui.buttons .button:last-child {
+        background-color: #396afc !important;
     }
 }
 

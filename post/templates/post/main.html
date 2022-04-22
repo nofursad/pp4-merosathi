@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
 Posts
-
 {% endblock title %}
 
 
@@ -12,7 +10,7 @@ Posts
     <form action="" method="POST" class="ui form" enctype="multipart/form-data">
         {% csrf_token %}
         {{post_form}}
-        <button type="submit" class="ui button positive" name="post_submit">Publish</button>
+        <button type="submit" class="ui button positive mt-5" name="post_submit">Publish</button>
     </form>
 </div>
 
