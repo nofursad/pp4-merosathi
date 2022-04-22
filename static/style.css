@@ -79,6 +79,9 @@ body {
     height: 35px !important;
     border-radius: 50% !important;
 }
+.m-screen {
+    width: 549px !important;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -88,4 +91,10 @@ body {
     .f-screen {
         display: none !important;
     }
-  }
+}
+
+@media only screen and (max-wdith: 425px) {
+    .m-screen {
+        width: 90% !important;
+    }
+}
