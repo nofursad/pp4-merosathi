@@ -66,7 +66,7 @@ User can edit or delete the posts as well as picture which they posted. User can
     - User Registration
       - A user needs to be registered before they can sign in.  The option to Register appears on the sign in page. To Register, the user needs to provide a) a email address which has not already been registered, b) an username which should also be unique. And c) a password which they must enter twice.  Once registered a user can sign in.
 
-        <!-- ![Register User](images/f10-register-user.png) Image to be inserted -->
+        ![Register User](documentation/features/f01-1-signup.png)
 
     - User Sign in
       - Once registered a user can sign in and will have access to extra functionality, namely :
@@ -77,37 +77,38 @@ User can edit or delete the posts as well as picture which they posted. User can
 
       - To sign in the user must provide a) a registered email-id and b) the password for the email-id
      
-        <!-- ![Sign in User](images/f11-signin-user.png) Image to be inserted -->
+        ![Sign in User](documentation/features/f01-2-signin.png)
       
     - User Sign out
       - A signed in user can sign out by clicking on the logout button on the navigation bar.  The user simply needs to confirm the action by clicking on the Sign out button on the page.
 
-        <!-- ![Sign out User](images/f12-signout-user.png) Image to be inserted -->
+        ![Sign out User](documentation/features/f01-3-signout.png)
 
 -   __F02 Navigation Bar__
     
     Navigation Bar only appear once the user have signed in using their registered email address and password. User will have a multiple link to go to post page, their own profile page, search for other user by their first / last name, view all profile, view friends request received as well as view friend request send to other user and Logout button to logout of their account.  
     
-    <!-- ![Navbar Full](images/f01-nav-bar-1.png) Image to be inserted -->
+    ![Navbar Full](documentation/features/f02-navbar.png)
     <!-- ![Navbar Full Signed in](images/f01-nav-bar-2.png) Image to be inserted -->
 
 -   __F03 Publish a Post__
     
     Once registered and logged in into their account, user can publish the post with picture on their profile. The post will be available for other user to view. Other user can like/unlike post as well as comment on the post. User will have option to edit as well as delete their post.
 
-    <!-- ![Publish a Post](images/f05-comment.png)  Image to be inserted-->
+    ![Publish a Post](documentation/features/f03-publish-post.png)
 
 -   __F04 Like a Post__
     
     In order to like a post a user must be signed in.  A post can be liked on post page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
 
-    <!-- ![Like Post](images/f06-like-post.png)  Image to be inserted -->
+    ![Like Post](documentation/features/f04-like-unlike.png)
 
 -   __F05 Edit/Delete a Post__
     
     Once logged into their account, user will have option to edit or delete the post that they have published previously.
 
-    <!-- ![Edit/Delete a Post](images/f09-delete-post.png) Image to be inserted -->
+    ![Edit/Delete a Post](documentation/features/f05-edit-delete.png)
+    
 -   __F06 Search for other User__
     
     Once logged into their account, user will have option to search for the other user by their first or last name. User simply have to type the first or last name of other user that they want to search and click on search button or hit enter. Result of all matching profile will be displayed on the Result page.
