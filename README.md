@@ -98,6 +98,7 @@ User can edit or delete the posts as well as picture which they posted. User can
     <!-- ![Publish a Post](images/f05-comment.png)  Image to be inserted-->
 
 -   __F04 Like a Post__
+    
     In order to like a post a user must be signed in.  A post can be liked on post page.  The user simply needs to click on the like/heart icon to toggle between like/unlike.
 
     <!-- ![Like Post](images/f06-like-post.png)  Image to be inserted -->
