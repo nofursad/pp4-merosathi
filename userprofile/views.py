@@ -15,6 +15,8 @@ def profile_page_view(request):
     user = Profile.objects.get(user=request.user)
     form = ProfileModelForm(request.POST or None, request.FILES or None, instance=user)
     confirm = False
+    posts = Post.objects.all().filter(author=user)
+    len_posts = True if len(Post.objects.all().filter(author=user)) > 0 else False
 
     if request.method == 'POST':
         if form.is_valid():
@@ -25,6 +27,8 @@ def profile_page_view(request):
         'user': user,
         'form': form,
         'confirm': confirm,
+        'posts': posts,
+        'len_posts': len_posts,
     }
 
     return render(request, 'userprofile/profilepage.html', context)

@@ -39,7 +39,7 @@
 <div class="ui grid">
     <div class="ui row stackable">
         <div class="four wide column">
-            <img src="{{user.avatar.url}}" alt="" class="ui medium rounded image">
+            <img src="{{user.avatar.url}}" alt="" class="ui centered medium rounded image">
             <h1>{{user.first_name}} {{ user.last_name}}</h1>
             <div class="ui vertical fluid menu">
                 <div class="item">
@@ -62,19 +62,18 @@
             <button class="ui active button mt-5" id="update-profile">Update Profile</button>
         </div>
         <div class="twelve wide column">
-            <!-- {% if len_posts %} -->
-            <!-- {% for post in ups %}
+            {% if len_posts %}
+            {% for post in posts %}
             <div class="segment ui fluid">
                 {% if post.image.url %}
                 <img alt class="image w-100" src="{{ post.image.url }}">
                 {% endif %}
                 {{ post.content }}
             </div>
-            {% endfor %} -->
-            <!-- {% else %} -->
-            <!-- <h1>No post from the {{user.first_name}}</h1>
-            {% endif %} -->
-            <!-- {{ profile }} -->
+            {% endfor %}
+            {% else %}
+            <h1>No post from the {{object.first_name}}</h1>
+            {% endif %}
         </div>
     </div>
 </div>

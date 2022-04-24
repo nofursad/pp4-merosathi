@@ -105,3 +105,11 @@ body {
         width: 90% !important;
     }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .ui.container {
+        width: 96%;
+        margin-left: auto!important;
+        margin-right: auto!important;
+    }
+}

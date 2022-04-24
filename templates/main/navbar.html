@@ -8,11 +8,13 @@
 
 <div class="ui fixed inverted menu nav mb-7">
     <div class="ui container">
-        <a href="{{ path_to_post }}"
-            class="{% if request.path == path_to_home %} active {% endif %} item">
+        <div class="item">
+            <a href="{{ path_to_post }}"
+            class="{% if request.path == path_to_home %} active {% endif %}">
             <div class="f-screen"><h3>Merosathi</h3></div>
             <div class="s-screen"><h4>Merosathi</h4></div>
         </a>
+        </div>
         <div class="right menu">
             <div class="item">
                 <form action="{% url 'userprofile:searchresult' %}" method="POST" class="f-screen">
@@ -62,7 +64,7 @@
             </a>
             <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
                 <div class="f-screen">Logout</div>
-                <i class="fa-solid fa-right-from-bracket s-screen"></i>
+                <div class="s-screen"><i class="fa-solid fa-right-from-bracket"></i></div>
             </a>
         </div>
     </div>
