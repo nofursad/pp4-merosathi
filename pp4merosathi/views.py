@@ -8,7 +8,8 @@ def home_page(request):
         context = {
             'user': user
         }
-        return render(request, 'post/main.html', context)
+        # return render(request, 'userprofile/profilepage.html', context)
+        return redirect('/post', context)
     else:
         form = LoginForm(request.POST or None)
         context = {

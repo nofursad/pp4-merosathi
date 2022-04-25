@@ -60,7 +60,7 @@
             <a href="{{ path_to_userprofile }}"
                 class="{% if request.path == path_to_userprofile %} active {% endif %} item">
                 <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
-                <div class="f-screen">{{ fname }}</div>
+                <div class="f-screen">{{ request.user }}</div>
             </a>
             <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
                 <div class="f-screen">Logout</div>
