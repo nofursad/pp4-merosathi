@@ -28,9 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# X_FRAME_OPTIONS = 'SAMEORIGIN'
+DEBUG = False
 
 ALLOWED_HOSTS = ['pp4-merosathi.herokuapp.com', 'localhost']
 
@@ -58,7 +56,6 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-# LOGIN_URL = '/admin/'
 LOGIN_REDIRECT_URL = '/post'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -112,13 +109,6 @@ WSGI_APPLICATION = 'pp4merosathi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
