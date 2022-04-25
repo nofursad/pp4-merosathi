@@ -6,11 +6,8 @@ Posts
 
 
 {% block content %}
-<div class="ui grid">
-    <div class="four wide column">
-        <img src="{{ user.avatar.url }}" alt="" class="fluid">
-    </div>
-    <div class="twelve wide column">
+<div class="ui stackable grid">
+    <div class="four wide column right">
         <div class="ui raised segment">
             <form action="" method="POST" class="ui form" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -18,6 +15,8 @@ Posts
                 <button type="submit" class="ui button positive mt-5" name="post_submit">Publish</button>
             </form>
         </div>
+    </div>
+    <div class="twelve wide column">
         
         {% for post in post_content %}
         <div class="ui card w-100">
