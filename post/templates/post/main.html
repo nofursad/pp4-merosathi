@@ -7,7 +7,7 @@ Posts
 
 {% block content %}
 <div class="ui stackable grid">
-    <div class="four wide column right">
+    <div class="sixteen wide tablet five wide computer column">
         <div class="ui raised segment">
             <form action="" method="POST" class="ui form" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -16,7 +16,7 @@ Posts
             </form>
         </div>
     </div>
-    <div class="twelve wide column">
+    <div class="sixteen wide tablet eleven wide computer column">
         
         {% for post in post_content %}
         <div class="ui card w-100">
