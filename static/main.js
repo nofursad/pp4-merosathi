@@ -4,11 +4,6 @@ $(document).ready(function () {
       .modal('show');
   })
 
-  $('#sign-out').click(function () {
-    $('#so-modal')
-      .modal('show');
-  })
-
   $('.ui.dropdown').dropdown()
 
   $('.like-form').submit(function (e) {

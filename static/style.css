@@ -70,6 +70,10 @@ body {
     background-color: 396afc !important;
 }
 
+.white {
+    color: white !important;
+}
+
 .ui.comments {
     margin: 0.5em 0 !important;
 }
@@ -85,6 +89,10 @@ body {
 
 .main.container {
     margin-top: 7em !important;
+}
+
+.mobile-search {
+    width: auto !important;
 }
 
 

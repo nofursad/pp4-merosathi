@@ -57,15 +57,20 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ path_to_userprofile }}"
-                class="{% if request.path == path_to_userprofile %} active {% endif %} item">
-                <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
-                <div class="f-screen">{{ request.user }}</div>
-            </a>
-            <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
-                <div class="f-screen">Logout</div>
-                <div class="s-screen"><i class="fa-solid fa-right-from-bracket"></i></div>
-            </a>
+            <div class="item">
+                <a href="{{ path_to_userprofile }}"
+                    class="{% if request.path == path_to_userprofile %} active {% endif %}">
+                    <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
+                    <div class="f-screen">{{ request.user }}</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="{% url 'account_logout' %}" class="ui item computer only"
+                    id="sign-out">
+                    <div class="f-screen">Logout</div>
+                    <div class="s-screen"><i class="fa-solid fa-right-from-bracket"></i></div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
