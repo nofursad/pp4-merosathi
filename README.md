@@ -227,162 +227,17 @@ The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile 
 
     - As this project uses Django templates the html has been validated by manually clicking through the application pages, copying the source of the rendered pages and then validating this version of the html using the W3C Validator (link shown above).  HTML  for the Django admin site pages was not edited so has not been validated here.  The Signup, Login and Logout pages from Django allauth were customized and so have been validated, with results below.
 
-    - results for index.html
-      - <details>
-        <summary>Index Page - Summary</summary>
-
-        <!-- ![Index Page - Summary](documentation/testing/validation/html-validation-img-rendered-index-page.png)Image to be uploaded later -->
-      </details>
-
-      - <a href="#" target="_blank">Index Page - Full HTML Validation Results</a>
-
-    - results for hike_detail.html
-      - <details>
-        <summary>Hike Detail Page - Summary</summary>
-
-        <!-- ![Hike Detail Page - Summary](documentation/testing/validation/html-validation-img-rendered-detail-page.png)Image to be uploaded later -->
-      </details>
-
-      - <a href="#" target="_blank">Hike Detail Page - Full HTML Validation Results</a>
-
-    - results for hike_mybookings.html
-      - <details>
-        <summary>My Bookings Page - Summary</summary>
-
-        <!-- ![My Bookings Page - Summary](documentation/testing/validation/html-validation-img-rendered-bookings-page.png)Image to be uploaded later -->
-      </details>
-
-      - <a href="#" target="_blank">My Bookings Page - Full HTML Validation Results</a>
-
-    - results for signup.html
-      - <details>
-        <summary>Signup/Register Page - Summary</summary>
-
-        <!-- ![Signup/Register Page - Summary](documentation/testing/validation/html-validation-img-rendered-register-page.png)Image to be uploaded later -->
-      </details>
-
-      - <a href="#" target="_blank">Signup/Register Page - Full HTML Validation Results</a>
-
-    - results for login.html
-      - <details>
-        <summary>Login/Sign in Page - Summary</summary>
-
-        <!-- ![Login/Sign in Page - Summary](documentation/testing/validation/html-validation-img-rendered-login-page.png)Image to be uploaded later -->
-      </details>
-      
-      - <a href="#" target="_blank">Login/Sign in Page - Full HTML Validation Results</a>
-
-    - results for logout.html
-      - <details>
-        <summary>Logout/Sign out Page - Summary</summary>
-
-        <!-- ![Logout/Sign out Page - Summary](documentation/testing/validation/html-validation-img-rendered-logout-page.png)Image to be uploaded later -->
-      </details>
-      
-      - <a href="#" target="_blank">Logout/Sign out Page - Full HTML Validation Results</a>  
-  
-
-- [CSS Validator](https://jigsaw.w3.org/css-validator/)
-
-    - <details>
-      <summary>style.css validation results</summary>
-
-      <!-- ![style.css](documentation/testing/validation/css-validation-img1.png)Image to be uploaded later -->
-      </details>
-
-    - <a href="#" target="_blank">CSS Validation - Full Results</a> 
-
 
 - [Javascript Validator](https://jshint.com/)
 
-  <details>
-    <summary>script.js validation results</summary>
-
-    <!-- ![Script JS](documentation/testing/validation/jquery-code-validation.png)Image to be uploaded later -->
-  </details>
-  <details>
-    <summary>script.test.js validation results</summary>
-
-    <!-- ![Script Test JS](documentation/testing/validation/jquery-test-validation.png)Image to be uploaded later -->
-  </details>
+  
 
 - [Python Validator](http://pep8online.com/)
-
-  <details>
-    <summary>project urls.py validation results</summary>
-
-    <!-- ![Project urls.py](documentation/testing/validation/pep8-validation-project-urls.png)Image to be uploaded later -->
-  </details>
-  <details>
-    <summary>project settings.py validation results</summary>
-
-    <!-- ![Project settings.py](documentation/testing/validation/pep8-validation-project-settings.png)Image to be uploaded later -->
-  </details>
-  <details>
-    <summary>application urls.py validation results</summary>
-
-    <!-- ![Application urls.py](documentation/testing/validation/pep8-validation-app-urls.png) -->
-  </details>
-  <details>
-    <summary>admin.py validation results</summary>
-
-    <!-- ![admin.py](documentation/testing/validation/pep8-validation-admin.png) -->
-  </details>
-  <details>
-    <summary>forms.py validation results</summary>
-
-    <!-- ![forms.py](documentation/testing/validation/pep8-validation-forms.png) -->
-  </details>
-  <details>
-    <summary>models.py validation results</summary>
-
-    <!-- ![models.py](documentation/testing/validation/pep8-validation-models.png) -->
-  </details>
-  <details>
-    <summary>views.py validation results</summary>
-
-    <!-- ![views.py](documentation/testing/validation/pep8-validation-views.png) -->
-  </details>
-  <details>
-    <summary>test_admin.py validation results</summary>
-
-    <!-- ![test_admin.py](documentation/testing/validation/pep8-validation-test_admin.png) -->
-  </details>
-  <details>
-    <summary>test_forms.py validation results</summary>
-
-    <!-- ![test_forms.py](documentation/testing/validation/pep8-validation-test_forms.png) -->
-  </details>
-  <details>
-    <summary>test_models.py validation results</summary>
-
-    <!-- ![test_models.py](documentation/testing/validation/pep8-validation-test_models.png) -->
-  </details>
-  <details>
-    <summary>test_views.py validation results</summary>
-
-    <!-- ![test_views.py](documentation/testing/validation/pep8-validation-test_views.png) -->
-  </details>
   
 
 ### Automated Testing
 
-  - [Jest](https://jestjs.io/) was used to test the application javascript and jquery code.  The functionality tested was the code to fade out, slide up and remove any raised alert messages after a 5 second delay.  The code is located in [Script JS](static/js/script.js), the test is located in [Test JS](static/js/tests/script.test.js)
-
-  - Jest test results :     
-    ![JS Test Results](documentation/testing/results/jquery-test-results.png)
-
-   - [Django testing tools](https://docs.djangoproject.com/en/3.2/topics/testing/tools/) were used to test the application python code.  
-   - DB tests were run in the development environment against a local SQLite3 database. 
-   - Tests were written for the following files :
-
-      - [forms.py](hikebooker/forms.py)  test file: [test_forms.py](hikebooker/test_forms.py)
-      - [models.py](hikebooker/models.py)  ters file: [test_models.py](hikebooker/test_models.py)
-      - [views.py](hikebooker/views.py)  test file: [test_views.py](hikebooker/test_views.py)
-      - [admin.py](hikebooker/admin.py)  test file: [test_admin.py](hikebooker/test_admin.py)  (tests were added for the customizations made to the django admin functionality)
-
-  - Django test results and coverage :   
-    <!-- ![Python Test Results](image/testing/results/python-coverage-test-results.png) -->
+  
 
 
 ### Browser Compatibility
@@ -416,7 +271,7 @@ Detailed below are instructions on how to clone this project repository and the 
 
 ### How to Clone the Repository 
 
-- Go to the https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes repository on GitHub 
+- Go to the https://github.com/nofursad/pp4-merosathi repository on GitHub 
 - Click the "Code" button to the right of the screen, click HTTPs and copy the link there
 - Open a GitBash terminal and navigate to the directory where you want to locate the clone
 - On the command line, type "git clone" then paste in the copied url and press the Enter key to begin the clone process
@@ -459,10 +314,10 @@ Detailed below are instructions on how to clone this project repository and the 
 
 ### Connect the Heroku app to the GitHub repository
 - Go to the Application Configuration page for the application on Heroku and click on the Deploy tab.
-- Select GitHub as the Deployment Method and if prompted, confirm that you want to connect to GitHub. Enter the name of the github repository (the one used for this project is (https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes) and click on Connect to link up the Heroku app to the GitHub repository code.
+- Select GitHub as the Deployment Method and if prompted, confirm that you want to connect to GitHub. Enter the name of the github repository (the one used for this project is (https://github.com/nofursad/pp4-merosathi) and click on Connect to link up the Heroku app to the GitHub repository code.
 - Scroll down the page and choose to either Automatically Deploy each time changes are pushed to GitHub, or Manually deploy - for this project Manual Deploy was selected.
 - The application can be run from the Application Configuration page by clicking on the Open App button.
-- The live link for this project is (https://pf4-wayfarers.herokuapp.com/)
+- The live link for this project is (https://pp4-merosathi.herokuapp.com/)
 
 ### Executing automated tests
 - The existing automated jquery/javascript test can be executed using jest as follows :
@@ -471,12 +326,12 @@ Detailed below are instructions on how to clone this project repository and the 
 
 - The existing automated django/python tests are executed using unittest as follows :
   - Run the python tests using the command : python3 manage.py test
-  - To run just a subset of the tests, then append the application and test file name to the command, e.g. : python3 manage.py test hikebooker.test_models
+  - To run just a subset of the tests, then append the application and test file name to the command, e.g. : python3 manage.py test post.test_models
 
 - Test coverage for the django/python tests can be reviewed using the coverage tool :
   - If coverage is not installed then run the command : pip3 install coverage
   - Execute the following series of commands to determine test coverage :
-    - coverage run --source=hikebooker manage.py test
+    - coverage run --source=post manage.py test
     - coverage report
     - coverage html
     - python3 -m http.server  (detailed results can be viewed via the browser in the htmlcov directory)
@@ -491,7 +346,7 @@ Once code changes have been completed and tested on localhost, the application c
 - In the Heroku Config Vars for the application delete this environment variable :  DISABLE_COLLECTSTATIC
 - On the Heroku dashboard go to the Deploy tab for the application and click on deploy branch
 
-#### The live link to the application can be found here - [P4 Wayfarers Hikes](https://pf4-wayfarers.herokuapp.com/) 
+#### The live link to the application can be found here - [PP4 Merosathi](https://pp4-merosathi.herokuapp.com/) 
 
 
 ## Credits 
