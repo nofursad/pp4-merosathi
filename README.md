@@ -8,7 +8,7 @@ User can create their own profile and post the pictures as well as posts. They c
 
 User can edit or delete the posts as well as picture which they posted. User can like or comment on the post or picture that are posted by other user but they can't edit/delete the post created by other user.
 
-<!-- ![Mockup](images/amiresponsive.png) Image to be inserted -->
+![Mockup](documentation/features/Mock-view-responsive.png)
 
 ## Index – Table of Contents
 * [User Experience (UX)](#user-experience-ux) 
@@ -113,39 +113,39 @@ User can edit or delete the posts as well as picture which they posted. User can
     
     Once logged into their account, user will have option to search for the other user by their first or last name. User simply have to type the first or last name of other user that they want to search and click on search button or hit enter. Result of all matching profile will be displayed on the Result page.
 
-    <!-- ![Search for other User](images/f13-add-a-post.png) Image to be inserted -->
+    ![Search for other User](documentation/features/f06-search-for-other-user-1.png)
+    ![Search for other User](documentation/features/f06-search-for-other-user-2.png)
 
 -   __F07 View all User Profile__
     
     Once logged into their account, user will have option to view profile of all other user on the network who are not yet friend with user or have send/received the friend request. User will have an option to send friend request as well.
 
-    <!-- ![View all User Profile](images/f13-add-a-post.png) Image to be inserted -->
+    ![View all User Profile](documentation/features/f07-view-all-user.png)
 
 -   __F08 View all Friend Request Send__
     
     Once logged into their account, user will have option to view all the friend request that logged in user have send to other user. When in the page, user also will have option to cancel the friend request if they decided that they no longer want to send a request.
 
-    <!-- ![View all Friend Request Send](images/f13-add-a-post.png) Image to be inserted -->
+    ![View all Friend Request Send](documentation/features/f08-view-friend-request-sent.png)
 
 -   __F09 View all Friend Request Received__
     
     Once logged into their account, user will have option to view all the friend request that logged in user have received from other user. When in the page, user also will have option to reject the friend request if they decided that they don't want to be a friend with the user that send a request.
 
-    <!-- ![View all Friend Request Received](images/f13-add-a-post.png) Image to be inserted -->
+    ![View all Friend Request Received](documentation/features/f09-view-friend-request-received.png)
 
 -   __F10 View all Post__
     
     Once logged into their account, user will have option to view all the post that current logged in user as well as other user have posted in network. In this page, user can like and comment in other user's post where as can also edit and delete their own post.
 
-    <!-- ![View all Post](images/f13-add-a-post.png) Image to be inserted -->
+    ![View all Post](documentation/features/f10-view-all-post.png)
 
--   __F11s On-screen messages__
+-   __F11 On-screen messages__
     
     To enhance usability of the application, user messages appear on-screen to confirm when certain actions have happened or report on problems.  For successful operations, a message will appear at the top of the screen and then fade-out/slide-up after 5 seconds.  For problems logging in, messages will appear in red text on-screen and stay until a user attempts the operation again.
 
-    <!-- ![Message example 1](images/f15-message-example-1.png) Image to be inserted -->
+    ![Message example 1](documentation/features/f11-on-screen-messages.png)
 
-    <!-- ![Message example 2](images/f15-message-example-2.png) Image to be inserted -->
 
 
 ### Features which could be implemented in the future
@@ -179,7 +179,8 @@ User can edit or delete the posts as well as picture which they posted. User can
     <details>
     <summary>Desktop Wireframes</summary>
 
-    <!-- ![Desktop Wireframes](images/wireframes/desktop.png) Image to be inserted -->
+    ![Desktop Wireframes](documentation/features/desktop-wireframes-1.png)
+    ![Desktop Wireframes](documentation/features/desktop-wireframes-2.png)
     </details>
 
 ## Planning
@@ -204,7 +205,6 @@ The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile 
 -   [Font Awesome:](https://fontawesome.com/) was used to add icons for aesthetic and UX purposes.
 -   [Git:](https://git-scm.com/) was used for version control by utilising the Gitpod terminal to commit to Git and Push to GitHub.
 -   [GitHub:](https://github.com/) is used as the respository for the project code after being pushed from Git. In addition, for this project GitHub was used for the agile development aspect through the use of User Stories (GitHub Issues) and tracking them on a Kanban board.
--   [dbdiagram.io](https://dbdiagram.io/home) was used to create the Entity Relationship diagrams for the application data model
 -   [Balsamiq:](https://balsamiq.com/) was used to create the wireframes during the design process.
 -   [Django](https://www.djangoproject.com/) was used as the framework to support rapid and secure development of the application
 -   [Sementic UI](https://semantic-ui.com/) was used to build responsive web pages
@@ -213,7 +213,6 @@ The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile 
 -   [psycopg2](https://pypi.org/project/psycopg2/) database adapter used to support the connection to the postgres db
 -   [Cloudinary](https://cloudinary.com/) used to store the images used by the application
 -   [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html) used for account registration and authentication
--   [Django crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to simplify form rendering
 -   [jquery library](https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js) used to fade out alert messages
 -   [Django testing tools](https://docs.djangoproject.com/en/3.2/topics/testing/tools/) used for python mvt testing
 -   [Jest](https://jestjs.io/) - used to test jquery in script.js
@@ -248,12 +247,6 @@ The Epic, User Stories and Kanban board can be accessed here : [Wayfarers Agile 
     - Microsoft Edge 94.0.992.38 (64-bit)
  
     
-### Manual Testing Test Cases and Results
-
-- The link below details the test cases that were used, the results, and a cross-reference to the Feature ID that each test case exercised (click link to open pdf).  The test cases are primarily based on the User Story acceptance criteria that were used to test iterations of the code during development.
-  
-  - <a href="#" target="_blank">Manual Testing - Test Cases and Results</a>
-
 ### Known bugs
 
 - Currently no known bugs.
@@ -354,11 +347,7 @@ Once code changes have been completed and tested on localhost, the application c
 ### Code 
 - Much of the coding and testing relies heavily on information in the "Hello Django" and "I Think Therefore I Blog" walkthroughs in the Code Institue Full Stack Frameworks module. 
 - Code on how to implement data model constraints was based on information found here : [Constraints](https://docs.djangoproject.com/en/3.2/ref/models/constraints/)
-- Information on errors when a foreign key field was included in search field list was found here : [Search Forgein Key](https://stackoverflow.com/questions/11754877/troubleshooting-related-field-has-invalid-lookup-icontains)
 - Code to restrict data value range : [Min Max Values](https://stackoverflow.com/questions/65416042/max-and-min-values-for-a-django-model-field-according-to-the-values-already-int)
-- Information on how to round decimal field to 2 places : [Round Decimals](https://stackoverflow.com/questions/37958130/automatically-round-djangos-decimalfield-according-to-the-max-digits-and-decima)
-- Information on how to implement jumbotron images : [Jumbotron](https://stackoverflow.com/questions/22000754/responsive-bootstrap-jumbotron-background-image)
-- Code on how to remove trailing zeroes from decimal fields : [Normalize function](https://stackoverflow.com/questions/40135464/django-remove-trailing-zeroes-for-a-decimal-in-a-template)
 - Setting to turn off auth email verification : [EMAIL VERIFICATION](https://stackoverflow.com/questions/53968044/django-user-registration-error-with-django-rest-auth-package)
 - Some ideas on how to format the authentication/Sign in/Registration pages came from : [Page layout demo](https://www.bootstrapdash.com/product/free-bootstrap-login/#product-demo-section)
 - Code to 'bold' active navbar link : [Active Link](https://stackoverflow.com/questions/32931436/active-tag-on-bootstrap-with-django)
@@ -378,8 +367,6 @@ Once code changes have been completed and tested on localhost, the application c
 - Code on how to delay jest test : [Jest Delay](https://stackoverflow.com/questions/46077176/jest-settimeout-not-pausing-test)
 - Code on how to stop jquery animations for jest testing : [De-activate animations](https://stackoverflow.com/questions/61295452/jest-test-jquery-fadein-fadeout-on-specific-elements)
 
-### Content 
-- ???
 
 ### Media 
 - The Lato font used was imported from [Google Fonts](https://fonts.google.com/)

@@ -100,9 +100,13 @@ body {
     left: 0 !important
 }
 
-
 .ui.dropdown .m-search {
     margin: -112px !important;
+}
+
+.ui.button.dropdown .menu {
+    width: auto !important;
+    min-width: 240px !important;
 }
 
 
