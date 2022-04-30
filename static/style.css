@@ -95,6 +95,16 @@ body {
     width: auto !important;
 }
 
+.ui.dropdown .menu {
+    margin: -60px !important;
+    left: 0 !important
+}
+
+
+.ui.dropdown .m-search {
+    margin: -112px !important;
+}
+
 
 @media only screen and (max-width: 780px) {
     .s-screen {
@@ -106,12 +116,23 @@ body {
     .ui.buttons .button:last-child {
         background-color: #396afc !important;
     }
+    .ui.multiple.dropdown {
+        padding: 0 !important;
+    }
+    .ui.icon.button {
+        padding: 0 !important;
+    }
 }
 
-@media only screen and (max-wdith: 425px) {
+@media only screen and (max-width: 425px) {
     .m-screen {
         width: 90% !important;
     }
+
+    .ui.button.dropdown .menu {
+        width: auto !important;
+    }
+    
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){

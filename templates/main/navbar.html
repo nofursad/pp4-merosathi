@@ -10,14 +10,19 @@
     <div class="ui container">
         <div class="item">
             <a href="{{ path_to_post }}"
-            class="{% if request.path == path_to_home %} active {% endif %}">
-            <div class="f-screen"><h3>Merosathi</h3></div>
-            <div class="s-screen"><h4>Merosathi</h4></div>
-        </a>
+                class="{% if request.path == path_to_home %} active {% endif %}">
+                <div class="f-screen">
+                    <h3>Merosathi</h3>
+                </div>
+                <div class="s-screen">
+                    <h4>Merosathi</h4>
+                </div>
+            </a>
         </div>
         <div class="right menu">
             <div class="item">
-                <form action="{% url 'userprofile:searchresult' %}" method="POST" class="f-screen">
+                <form action="{% url 'userprofile:searchresult' %}" method="POST"
+                    class="f-screen">
                     {% csrf_token %}
                     <div class="ui action left icon input">
                         <input class="prompt" type="text" name='search'
@@ -26,8 +31,22 @@
                         <button type='submit' class="ui button">Search</button>
                     </div>
                 </form>
-                <div class="s-screen">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="ui teal buttons s-screen">
+                    <div class="ui floating dropdown icon button s-screen">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <div class="menu m-search">
+                            <form action="{% url 'userprofile:searchresult' %}" method="POST"
+                                class="s-screen item">
+                                {% csrf_token %}
+                                <div class="ui icon search input">
+                                    <input class="prompt" type="text" name='search'
+                                        placeholder="name of a friend..." autofocus="autofocus">
+                                    <i class="search icon"></i>
+                                    <!-- <button type='submit' class="ui button">Search</button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="item">
@@ -57,20 +76,15 @@
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <a href="{{ path_to_userprofile }}"
-                    class="{% if request.path == path_to_userprofile %} active {% endif %}">
-                    <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
-                    <div class="f-screen">{{ request.user }}</div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{% url 'account_logout' %}" class="ui item computer only"
-                    id="sign-out">
-                    <div class="f-screen">Logout</div>
-                    <div class="s-screen"><i class="fa-solid fa-right-from-bracket"></i></div>
-                </a>
-            </div>
+            <a href="{{ path_to_userprofile }}"
+                class="{% if request.path == path_to_userprofile %} active {% endif %} item">
+                <img src="{{ picture.url }}" alt="" class="ui avatar image">&nbsp;
+                <div class="f-screen">{{ request.user }}</div>
+            </a>
+            <a href="{% url 'account_logout' %}" class="ui item computer only" id="sign-out">
+                <div class="f-screen">Logout</div>
+                <div class="s-screen"><i class="fa-solid fa-right-from-bracket"></i></div>
+            </a>
         </div>
     </div>
 </div>
